@@ -11771,11 +11771,7 @@ ul.typeahead-list > li > a {
 
     </style>
 <style type="text/css">
-    body {
-	background-color: #FFFFFF;
-	font-color: #FFFFFF;
-}
-
+    
     </style>
 
 
@@ -12025,7 +12021,7 @@ a.anchor-link {
 <div class="prompt input_prompt">In&nbsp;[37]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>docker pull postgres:9.6
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">!</span>docker pull postgres:9.6
 <span class="o">!</span>docker run -p <span class="m">5430</span>:5432 --name jupy-old-postgres -e <span class="nv">POSTGRES_PASSWORD</span><span class="o">=</span>mysecretpassword -d postgres:9.6
 </pre></div>
 
@@ -12060,7 +12056,7 @@ ea95e66ea557f1ad3eca203be4ca690ead9d2cd974dac76fe190902241f83305
 <div class="prompt input_prompt">In&nbsp;[38]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>docker pull postgres:10
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">!</span>docker pull postgres:10
 <span class="o">!</span>docker run -p <span class="m">5431</span>:5432 --name jupy-new-postgres -e <span class="nv">POSTGRES_PASSWORD</span><span class="o">=</span>mysecretpassword -d postgres:10
 </pre></div>
 
@@ -12100,10 +12096,10 @@ Status: Image is up to date for postgres:10
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">reload_ext</span> sql
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">reload_ext</span> sql
 <span class="n">connection96</span> <span class="o">=</span> <span class="s2">&quot;postgresql+psycopg2://postgres:mysecretpassword@localhost:5430/postgres&quot;</span>
 <span class="n">connection10</span> <span class="o">=</span> <span class="s2">&quot;postgresql+psycopg2://postgres:mysecretpassword@localhost:5431/postgres&quot;</span>
 </pre></div>
@@ -12118,7 +12114,7 @@ Status: Image is up to date for postgres:10
 <div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection96
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection96
 select current_setting(&#39;server_version&#39;);
 </pre></div>
 
@@ -12169,7 +12165,7 @@ select current_setting(&#39;server_version&#39;);
 <div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10
 select current_setting(&#39;server_version&#39;)
 </pre></div>
 
@@ -12290,7 +12286,7 @@ select current_setting(&#39;server_version&#39;)
 <div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10
 CREATE TABLE foo (id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY, val1 INTEGER);
 INSERT INTO foo(val1) VALUES (1);
 </pre></div>
@@ -12354,7 +12350,7 @@ INSERT INTO foo(val1) VALUES (1);
 <div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10
 ALTER TABLE foo ALTER COLUMN id RESTART WITH 1000;
 INSERT INTO foo(val1) VALUES (2);
 </pre></div>
@@ -12409,7 +12405,7 @@ INSERT INTO foo(val1) VALUES (2);
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10
 CREATE TABLE bar (LIKE foo INCLUDING ALL);
 INSERT INTO bar(val1) VALUES (3);
 INSERT INTO foo(val1) VALUES (4);
@@ -12466,7 +12462,7 @@ INSERT INTO foo(val1) VALUES (4);
 <div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10 
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10 
 SELECT id, val1, &#39;foo&#39; as tbl FROM foo
 UNION
 SELECT id, val1, &#39;bar&#39; as tbl FROM bar
@@ -12549,7 +12545,7 @@ ORDER BY val1;
 <div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection96 
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection96 
 SELECT id, val1, &#39;foo&#39; as tbl FROM foo
 UNION
 SELECT id, val1, &#39;bar&#39; as tbl FROM bar
@@ -12801,7 +12797,7 @@ Indexes:
 <div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10
 INSERT INTO measurement(datetime, site_id, pollutant_id, value)
 SELECT &#39;2017-08-01&#39;::TIMESTAMPTZ + ((random()*90)::int) * INTERVAL &#39;1 day&#39;,
 (1 + random()*(SELECT max(id)-1 FROM site))::int,
@@ -12859,7 +12855,7 @@ FROM generate_series(1,1000);
 <div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10
 SELECT * FROM measurement WHERE datetime BETWEEN &#39;2017-09-20&#39; AND &#39;2017-09-27&#39; limit 5;
 </pre></div>
 
@@ -12954,7 +12950,7 @@ SELECT * FROM measurement WHERE datetime BETWEEN &#39;2017-09-20&#39; AND &#39;2
 <div class="prompt input_prompt">In&nbsp;[29]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10
 EXPLAIN SELECT * FROM measurement WHERE datetime BETWEEN &#39;2017-09-20&#39; AND &#39;2017-09-27&#39; limit 5;
 </pre></div>
 
@@ -13071,7 +13067,7 @@ EXPLAIN SELECT * FROM measurement WHERE datetime BETWEEN &#39;2017-09-20&#39; AN
 <div class="prompt input_prompt">In&nbsp;[37]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10 
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10 
 EXPLAIN SELECT datetime FROM counting_log WHERE child_id=123;
 </pre></div>
 
@@ -13131,7 +13127,7 @@ EXPLAIN SELECT datetime FROM counting_log WHERE child_id=123;
 <div class="prompt input_prompt">In&nbsp;[38]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10 
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10 
 EXPLAIN SELECT datetime FROM counting_log WHERE word=&#39;miny&#39;;
 </pre></div>
 
@@ -13195,7 +13191,7 @@ EXPLAIN SELECT datetime FROM counting_log WHERE word=&#39;miny&#39;;
 <div class="prompt input_prompt">In&nbsp;[40]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10 
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10 
 EXPLAIN SELECT datetime FROM counting_log WHERE word=&#39;miny&#39; and child_id=123;
 </pre></div>
 
@@ -13266,7 +13262,7 @@ EXPLAIN SELECT datetime FROM counting_log WHERE word=&#39;miny&#39; and child_id
 <div class="prompt input_prompt">In&nbsp;[49]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10 
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10 
 SELECT count(datetime) FROM counting_log WHERE word=&#39;miny&#39; and child_id=123;
 </pre></div>
 
@@ -13389,7 +13385,7 @@ SELECT count(datetime) FROM counting_log WHERE word=&#39;miny&#39; and child_id=
 <div class="prompt input_prompt">In&nbsp;[44]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10
 CREATE STATISTICS st_counting_log_child_id_word ON child_id, word FROM counting_log;
 
 ANALYZE counting_log;
@@ -13464,9 +13460,640 @@ Done.
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1>More parallelism</h1>
+<h1 id="More-parallelism!">More parallelism!<a class="anchor-link" href="#More-parallelism!">&#182;</a></h1>
 </div>
 </div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Parallel-queries-in-Postgres-so-far">Parallel queries in Postgres so far<a class="anchor-link" href="#Parallel-queries-in-Postgres-so-far">&#182;</a></h2><ul>
+<li>Parallel queries were introduced in postgres 9.6<ul>
+<li>Parallel Scans<ul>
+<li>Sequential scan only</li>
+</ul>
+</li>
+<li>Parallel Joins<ul>
+<li>Nested loop</li>
+<li>Hash join</li>
+</ul>
+</li>
+<li>Parallel Aggregation</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="With-pg10-we-also-get:">With pg10 we also get:<a class="anchor-link" href="#With-pg10-we-also-get:">&#182;</a></h2><ul>
+<li>Parallel queries were introduced in postgres 9.6<ul>
+<li>Parallel Scans<ul>
+<li>sequential scan only</li>
+<li><strong>bitmap heap scan</strong></li>
+<li><strong>index scan</strong></li>
+<li><strong>index-only scan</strong></li>
+</ul>
+</li>
+<li>Parallel Joins<ul>
+<li>nested loop</li>
+<li>hash join</li>
+<li><strong>merge join</strong></li>
+</ul>
+</li>
+<li>Parallel Aggregation </li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="New-settings">New settings<a class="anchor-link" href="#New-settings">&#182;</a></h2>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Minimal-size-of-a-table-for-which-parallelism-can-be-triggered">Minimal size of a table for which parallelism can be triggered<a class="anchor-link" href="#Minimal-size-of-a-table-for-which-parallelism-can-be-triggered">&#182;</a></h3>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10
+show min_parallel_table_scan_size
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>1 rows affected.
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[2]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<table>
+    <tr>
+        <th>min_parallel_table_scan_size</th>
+    </tr>
+    <tr>
+        <td>8MB</td>
+    </tr>
+</table>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Minimal-size-of-a-index-for-which-parallelism-can-be-triggered">Minimal size of a index for which parallelism can be triggered<a class="anchor-link" href="#Minimal-size-of-a-index-for-which-parallelism-can-be-triggered">&#182;</a></h3>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10
+show min_parallel_index_scan_size
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>1 rows affected.
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[4]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<table>
+    <tr>
+        <th>min_parallel_index_scan_size</th>
+    </tr>
+    <tr>
+        <td>512kB</td>
+    </tr>
+</table>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Maximum-number-of-parallel-workers-to-be-used">Maximum number of parallel workers to be used<a class="anchor-link" href="#Maximum-number-of-parallel-workers-to-be-used">&#182;</a></h3>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10
+show max_parallel_workers
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>1 rows affected.
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[5]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<table>
+    <tr>
+        <th>max_parallel_workers</th>
+    </tr>
+    <tr>
+        <td>8</td>
+    </tr>
+</table>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Example-time">Example time<a class="anchor-link" href="#Example-time">&#182;</a></h2>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Parallel-aggregate-(old-stuff)">Parallel aggregate (old stuff)<a class="anchor-link" href="#Parallel-aggregate-(old-stuff)">&#182;</a></h3>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10
+EXPLAIN ANALYZE SELECT count(arg) FROM trigonometry WHERE arg &gt; 50000;
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>10 rows affected.
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[22]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<table>
+    <tr>
+        <th>QUERY PLAN</th>
+    </tr>
+    <tr>
+        <td>Finalize Aggregate  (cost=140633.42..140633.43 rows=1 width=8) (actual time=1129.714..1129.714 rows=1 loops=1)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;-&gt;  Gather  (cost=140633.20..140633.41 rows=2 width=8) (actual time=1129.676..1129.709 rows=3 loops=1)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Planned: 2</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Launched: 2</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=139633.20..139633.21 rows=1 width=8) (actual time=1125.419..1125.419 rows=1 loops=3)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on trigonometry  (cost=0.00..134441.63 rows=2076628 width=8) (actual time=413.910..946.126 rows=1666667 loops=3)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filter: (arg &gt; '50000'::numeric)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rows Removed by Filter: 1666667</td>
+    </tr>
+    <tr>
+        <td>Planning time: 0.174 ms</td>
+    </tr>
+    <tr>
+        <td>Execution time: 1135.755 ms</td>
+    </tr>
+</table>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Parallel-index-scan-(new-and-shiny)">Parallel index scan (new and shiny)<a class="anchor-link" href="#Parallel-index-scan-(new-and-shiny)">&#182;</a></h3>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10
+EXPLAIN ANALYZE SELECT * FROM trigonometry WHERE arg &gt; 50000;
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>4 rows affected.
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[23]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<table>
+    <tr>
+        <th>QUERY PLAN</th>
+    </tr>
+    <tr>
+        <td>Index Scan using idx_trigonometry_arg on trigonometry  (cost=0.43..202545.83 rows=4983908 width=32) (actual time=0.079..1444.759 rows=5000000 loops=1)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;Index Cond: (arg &gt; '50000'::numeric)</td>
+    </tr>
+    <tr>
+        <td>Planning time: 0.115 ms</td>
+    </tr>
+    <tr>
+        <td>Execution time: 1645.573 ms</td>
+    </tr>
+</table>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></div></section><section>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10
+SET parallel_setup_cost=100;
+EXPLAIN ANALYZE SELECT * FROM trigonometry WHERE arg &gt; 50000;
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Done.
+4 rows affected.
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[24]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<table>
+    <tr>
+        <th>QUERY PLAN</th>
+    </tr>
+    <tr>
+        <td>Index Scan using idx_trigonometry_arg on trigonometry  (cost=0.43..202545.83 rows=4983908 width=32) (actual time=0.070..1223.772 rows=5000000 loops=1)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;Index Cond: (arg &gt; '50000'::numeric)</td>
+    </tr>
+    <tr>
+        <td>Planning time: 0.097 ms</td>
+    </tr>
+    <tr>
+        <td>Execution time: 1396.401 ms</td>
+    </tr>
+</table>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div align="center"><iframe src="https://giphy.com/embed/Az1CJ2MEjmsp2" width="480" height="221" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div>
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10
+SET parallel_setup_cost=1000;
+EXPLAIN ANALYZE SELECT arg FROM trigonometry WHERE sine &gt; 0.999 AND arg &gt;100 AND arg &lt; 10000;
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Done.
+9 rows affected.
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[27]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<table>
+    <tr>
+        <th>QUERY PLAN</th>
+    </tr>
+    <tr>
+        <td>Gather  (cost=1000.43..40533.65 rows=13430 width=8) (actual time=0.516..147.479 rows=14097 loops=1)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;Workers Planned: 2</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;Workers Launched: 2</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;-&gt;  Parallel Index Scan using idx_trigonometry_arg on trigonometry  (cost=0.43..38190.65 rows=5596 width=8) (actual time=0.366..142.974 rows=4699 loops=3)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Index Cond: ((arg &gt; '100'::numeric) AND (arg &lt; '10000'::numeric))</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filter: (sine &gt; '0.999'::double precision)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rows Removed by Filter: 325301</td>
+    </tr>
+    <tr>
+        <td>Planning time: 0.286 ms</td>
+    </tr>
+    <tr>
+        <td>Execution time: 153.849 ms</td>
+    </tr>
+</table>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Let's-spread-some-chaos">Let's spread some chaos<a class="anchor-link" href="#Let's-spread-some-chaos">&#182;</a></h2><div align="center"><iframe src="https://giphy.com/embed/moiWSfviYKNgc" width="480" height="360" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10
+SET max_parallel_workers =0;
+SET force_parallel_mode=on;
+EXPLAIN ANALYZE SELECT arg FROM trigonometry WHERE sine &gt; 0.999 AND arg &gt;100 AND arg &lt; 10000;
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Done.
+Done.
+9 rows affected.
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[28]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<table>
+    <tr>
+        <th>QUERY PLAN</th>
+    </tr>
+    <tr>
+        <td>Gather  (cost=1000.43..40533.65 rows=13430 width=8) (actual time=0.269..259.633 rows=14097 loops=1)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;Workers Planned: 2</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;Workers Launched: 0</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;-&gt;  Parallel Index Scan using idx_trigonometry_arg on trigonometry  (cost=0.43..38190.65 rows=5596 width=8) (actual time=0.073..257.811 rows=14097 loops=1)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Index Cond: ((arg &gt; '100'::numeric) AND (arg &lt; '10000'::numeric))</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filter: (sine &gt; '0.999'::double precision)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rows Removed by Filter: 975902</td>
+    </tr>
+    <tr>
+        <td>Planning time: 0.156 ms</td>
+    </tr>
+    <tr>
+        <td>Execution time: 260.346 ms</td>
+    </tr>
+</table>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
