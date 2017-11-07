@@ -11779,11 +11779,52 @@ ul.typeahead-list > li > a {
  -webkit-font-smoothing: antialiased !important;
 }
 span.mrow {
- color: #FFFFFF
+ color: #FFFFFF;
 }
-.reveal .progress span {
- background: #00FDBD;
+.highlight .k {
+ color: #5934E7;
 }
+.highlight .nb {
+ color: #5934E7;
+}
+.highlight .s1, .s2{
+ color: #00FDBD !important;
+}
+.highlight .s{
+ color: #00FDBD;
+}
+.highlight .mf{
+ color: #FFFFFF;
+}
+.highlight .n{
+ color: #FFFFFF;
+}
+.highlight .p{
+ color: #FFFFFF;
+}
+.highlight .o{
+ color: #FFFFFF;
+}
+.highlight .m{
+ color: #FFFFFF;
+}
+body {
+    background-color: #000001;
+    background-image: url("https://10clouds.com/wp-content/themes/thegem/dist/images/10clouds-logo.svg");
+    background-position: right top;
+    background-repeat: no-repeat;
+    background-origin: content-box;
+    padding-right: 20px;
+    padding-top: 10px;
+    background-size: 200px 150px;
+}
+div.progress{
+ background: #5934E7 !important;
+}
+.reveal .progress span{
+ background: #00FDBD !important;
+}
+
 body,
 span.nv {
  color: #00FDBD;
@@ -11800,11 +11841,20 @@ img.tenc-header__logo {
 div.input_prompt {
 color: #00FDBD
 }
+.rendered_html thead {
+ background: #000000 !important;
+ color: #00FDBD !important;
+}
+ tbody tr {
+ background: #000001 !important;
+}
 
 
+/*
 body {
  background-color: #000001;
 }
+*/
 div.body {
  font-family: sans-serif;
  font-size: 13pt;
@@ -13730,7 +13780,7 @@ pre {
  margin: 0 0 9px;
  font-size: 12.0pt;
  line-height: 1.42857143;
- color: #cdd2e9;
+ color: #FFFFFF;
  background-color: #2a313c;
  border: 1px solid #2a313c;
  border-radius: 2px;
@@ -13766,7 +13816,7 @@ div.text_cell_render code {
  font-family: monospace, monospace;
  font-size: 11pt !important;
  line-height: 170% !important;
- color: #abc1e2;
+ color: #FFFFFF;
  background: #000001;
  background-color: #000001;
  max-width: 80%;
@@ -13774,8 +13824,8 @@ div.text_cell_render code {
  border-left: none;
 }
 div.text_cell_render pre {
- border-left: 3px solid #3572c6 !important;
- max-width: 80%;
+ border-left: 3px solid #5934E7 !important;
+ max-width: 100% !important;
  border-radius: 0px;
  padding-left: 5px;
  margin-left: 6px;
@@ -13876,7 +13926,7 @@ div#_vivaldi-spatnav-focus-indicator._vivaldi-spatnav-focus-indicator {
 }
 .rendered_html td {
  font-family: sans-serif !important;
- font-size: 9.3pt;
+ font-size: 11pt;
 }
 .rendered_html table {
  font-family: sans-serif !important;
@@ -13890,7 +13940,7 @@ div#_vivaldi-spatnav-focus-indicator._vivaldi-spatnav-focus-indicator {
 }
 .rendered_html thead {
  font-family: sans-serif !important;
- font-size: 10.3pt !important;
+ font-size: 13pt !important;
  background: #2e3642;
  color: #d4d8ec;
  border-bottom: 1px solid #2e3642;
@@ -15134,9 +15184,8 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><h1 align="center"> 5 really cool features of Postgres 10</h1>
-<br><br><br><br><br></p>
-<h2 align="right"> Author: Jakub Wilkowski</h2>
+<h1 id="5-really-cool-features-of-Postgres-10">5 really cool features of Postgres 10<a class="anchor-link" href="#5-really-cool-features-of-Postgres-10">&#182;</a></h1><p><br /><br /><br /><br /><br /></p>
+<h2 id="Author:-Jakub-Wilkowski-"><div style="text-align: right">Author: Jakub Wilkowski </div><a class="anchor-link" href="#Author:-Jakub-Wilkowski-">&#182;</a></h2>
 </div>
 </div>
 </div></section></section><section><section>
@@ -15144,15 +15193,21 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1>About me</h1><p><h2>Currently:</h2></p>
-<p><h2>Python developer @ 10Clouds</h2>
-<img class="tenc-header__logo" src="https://10clouds.com/wp-content/themes/thegem/dist/images/10clouds-logo.svg" alt="10Clouds" style="background: #000001"></p>
-<p><h2>Previously:</h2></p>
+<h1 id="Agenda">Agenda<a class="anchor-link" href="#Agenda">&#182;</a></h1><p><br /></p>
 <ul>
-    <li><h3>Database developer in major telecom company</h3></li>
-    <li><h3>Application development specialist in consulting/finance</h3></li>
-    <li><h3>MSc in telecommunications</h3></li>
+<li>A little bit about postgres</li>
+<li>Environment setup</li>
+<li>New features:<ol>
+<li>Identity columns</li>
+<li>Native partitioning</li>
+<li>Multicolumn statistics</li>
+<li>More parallelism</li>
+<li>Full text search support JSON &amp; JSONB columns</li>
+</ol>
+</li>
+<li>Summary</li>
 </ul>
+
 </div>
 </div>
 </div></section></section><section><section>
@@ -15160,61 +15215,7 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><h1>Agenda</h1>
-<br></p>
-<ul>
-    <li>A little bit about postgres</li>
-    <li>Environment setup</li>
-    <li>New features:
-        <ol>
-            <li>Identity columns</li>
-            <li>Native partitioning</li>
-            <li>Multicolumn statistics</li>
-            <li>More parallelism</li>
-            <li>Full text search support JSON & JSONB columns</li>
-        </ol>
-    <li>Summary</li>
-</ul>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1>Why Postgres?</h1>
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><br></p>
-<div align="center"><iframe align="center" src="https://giphy.com/embed/c5iMjFfrUFpza" width="480" height="266" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div>
-</div>
-</div>
-</div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><h1>Postgres</h1></p>
-<ul>
-    <li>open source</li>
-    <li>object RDBMS</li>
-    <li>big flexiblity</li>
-    <li>extensions!</li>
-    <li>a lot of fun</li>
-</ul>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1>Setup</h1>
+<h1 id="Setup">Setup<a class="anchor-link" href="#Setup">&#182;</a></h1>
 </div>
 </div>
 </div></section><section>
@@ -15222,23 +15223,7 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><h2>Requirements</h2></p>
-<ul>
-    <li>postgres 9.6.5</li>
-    <li>postgres 10</li>
-    <li>psycopg2</li>
-    <li>jupyter</li>
-    <li>jupyter-sql</li>
-    <li>docker</li>
-</ul>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1>Postgres docker images</h1>
+<h2 id="Postgres-docker-images">Postgres docker images<a class="anchor-link" href="#Postgres-docker-images">&#182;</a></h2>
 </div>
 </div>
 </div><div class="fragment">
@@ -15247,7 +15232,7 @@ a.anchor-link {
 <div class="prompt input_prompt">In&nbsp;[37]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>docker pull postgres:9.6
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">!</span>docker pull postgres:9.6
 <span class="o">!</span>docker run -p <span class="m">5430</span>:5432 --name jupy-old-postgres -e <span class="nv">POSTGRES_PASSWORD</span><span class="o">=</span>mysecretpassword -d postgres:9.6
 </pre></div>
 
@@ -15282,7 +15267,7 @@ ea95e66ea557f1ad3eca203be4ca690ead9d2cd974dac76fe190902241f83305
 <div class="prompt input_prompt">In&nbsp;[38]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>docker pull postgres:10
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">!</span>docker pull postgres:10
 <span class="o">!</span>docker run -p <span class="m">5431</span>:5432 --name jupy-new-postgres -e <span class="nv">POSTGRES_PASSWORD</span><span class="o">=</span>mysecretpassword -d postgres:10
 </pre></div>
 
@@ -15316,18 +15301,18 @@ Status: Image is up to date for postgres:10
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1>Connection to database(s)</h1>
+<h2 id="Connection-to-database(s)">Connection to database(s)<a class="anchor-link" href="#Connection-to-database(s)">&#182;</a></h2>
 </div>
 </div>
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">reload_ext</span> sql
-<span class="n">connection96</span> <span class="o">=</span> <span class="s2">&quot;postgresql+psycopg2://postgres:mysecretpassword@localhost:5430/postgres&quot;</span>
-<span class="n">connection10</span> <span class="o">=</span> <span class="s2">&quot;postgresql+psycopg2://postgres:mysecretpassword@localhost:5431/postgres&quot;</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">reload_ext</span> sql
+<span class="n">connection96</span><span class="o">=</span><span class="s2">&quot;postgresql+psycopg2://postgres:mysecretpassword@localhost:5430/postgres&quot;</span>
+<span class="n">connection10</span><span class="o">=</span><span class="s2">&quot;postgresql+psycopg2://postgres:mysecretpassword@localhost:5431/postgres&quot;</span>
 </pre></div>
 
 </div>
@@ -15340,7 +15325,7 @@ Status: Image is up to date for postgres:10
 <div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection96
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection96
 select current_setting(&#39;server_version&#39;);
 </pre></div>
 
@@ -15391,7 +15376,7 @@ select current_setting(&#39;server_version&#39;);
 <div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10
 select current_setting(&#39;server_version&#39;)
 </pre></div>
 
@@ -15441,7 +15426,7 @@ select current_setting(&#39;server_version&#39;)
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 vertical-align="top">Identity columns</h1>
+<h1 id="1.-Identity-columns">1. Identity columns<a class="anchor-link" href="#1.-Identity-columns">&#182;</a></h1>
 </div>
 </div>
 </div><div class="fragment">
@@ -15450,35 +15435,39 @@ select current_setting(&#39;server_version&#39;)
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <table>
-    <tr>
-        <th><font color="red">ID</font></th>
-        <th>datetime</th>
-        <th>user_id</th>
-        <th>amount</th>
-        <th>category_id</th>
-    </tr>
-    <tr>
-        <td><font color="red">101</font></td>
-        <td>'2017-01-01'</td>
-        <td>123456</td>
-        <td>456</td>
-        <td>2</td>
-    </tr>
-    <tr>
-        <td><font color="red">102</font></td>
-        <td>'2017-01-02'</td>
-        <td>123412</td>
-        <td>1000</td>
-        <td>4</td>
-    </tr>
-    <tr>
-        <td>...</td>
-        <td>...</td>
-        <td>...</td>
-        <td>...</td>
-        <td>...</td>
-    </tr>
+<thead><tr>
+<th>ID</th>
+<th>datetime</th>
+<th>user_id</th>
+<th>amount</th>
+<th>category_id</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>101</td>
+<td>'2017-01-01'</td>
+<td>123456</td>
+<td>456</td>
+<td>2</td>
+</tr>
+<tr>
+<td>102</td>
+<td>'2017-01-02'</td>
+<td>123412</td>
+<td>1000</td>
+<td>4</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div></div><div class="fragment">
@@ -15502,15 +15491,15 @@ select current_setting(&#39;server_version&#39;)
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><h2>Example (pg10)</h2></p>
-<h3>Create table with identity column</h3>
+<h2 id="Example-(pg10)">Example (pg10)<a class="anchor-link" href="#Example-(pg10)">&#182;</a></h2>
 </div>
 </div>
-</div><div class="fragment">
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Create-table-with-identity-column">Create table with identity column<a class="anchor-link" href="#Create-table-with-identity-column">&#182;</a></h3><p><br /></p>
 <div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">foo</span> <span class="p">(</span>
     <span class="n">id</span> <span class="nb">INTEGER</span> <span class="n">GENERATED</span> <span class="k">ALWAYS</span> <span class="k">AS</span> <span class="k">IDENTITY</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span> 
     <span class="n">val1</span> <span class="nb">INTEGER</span><span class="p">);</span>
@@ -15520,48 +15509,24 @@ select current_setting(&#39;server_version&#39;)
 
 </div>
 </div>
-</div></div><div class="fragment">
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<blockquote><p>GENERATED { ALWAYS | BY DEFAULT } AS IDENTITY [ ( sequence_options ) ] |</p>
-</blockquote>
-
-</div>
-</div>
-</div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>Sequence restart</h2>
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Sequence-restart">Sequence restart<a class="anchor-link" href="#Sequence-restart">&#182;</a></h3><p><br /></p>
 <div class="highlight"><pre><span></span><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">foo</span> <span class="k">ALTER</span> <span class="k">COLUMN</span> <span class="n">id</span> <span class="k">RESTART</span> <span class="k">WITH</span> <span class="mf">1000</span><span class="p">;</span>
 <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">foo</span><span class="p">(</span><span class="n">val1</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mf">2</span><span class="p">);</span>
 </pre></div>
 
 </div>
 </div>
-</div></div></section><section>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3>Creating copy of the table</h3>
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Creating-copy-of-the-table">Creating copy of the table<a class="anchor-link" href="#Creating-copy-of-the-table">&#182;</a></h3><p><br /></p>
 <div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">bar</span> <span class="p">(</span><span class="k">LIKE</span> <span class="n">foo</span> <span class="k">INCLUDING</span> <span class="k">ALL</span><span class="p">);</span>
 <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">bar</span><span class="p">(</span><span class="n">val1</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mf">3</span><span class="p">);</span>
 <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">foo</span><span class="p">(</span><span class="n">val1</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mf">4</span><span class="p">);</span>
@@ -15569,97 +15534,18 @@ select current_setting(&#39;server_version&#39;)
 
 </div>
 </div>
-</div></div></section><section>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3>Querying foo & bar</h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10 
-SELECT id, val1, &#39;foo&#39; as tbl FROM foo
-UNION
-SELECT id, val1, &#39;bar&#39; as tbl FROM bar
-ORDER BY val1;
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>4 rows affected.
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[12]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<table>
-    <tr>
-        <th>id</th>
-        <th>val1</th>
-        <th>tbl</th>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>1</td>
-        <td>foo</td>
-    </tr>
-    <tr>
-        <td>1000</td>
-        <td>2</td>
-        <td>foo</td>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>3</td>
-        <td>bar</td>
-    </tr>
-    <tr>
-        <td>1001</td>
-        <td>4</td>
-        <td>foo</td>
-    </tr>
-</table>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Querying-foo-&amp;-bar">Querying foo &amp; bar<a class="anchor-link" href="#Querying-foo-&amp;-bar">&#182;</a></h3><p><br /></p>
 <div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="n">val1</span><span class="p">,</span> <span class="s1">&#39;foo&#39;</span> <span class="k">AS</span> <span class="n">tbl</span> <span class="k">FROM</span> <span class="n">foo</span>
 <span class="k">UNION</span>
 <span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="n">val1</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span> <span class="k">AS</span> <span class="n">tbl</span> <span class="k">FROM</span> <span class="n">bar</span>
 <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">val1</span><span class="p">;</span>
 </pre></div>
+<p><br/></p>
 <table>
 <thead><tr>
 <th>id</th>
@@ -15693,14 +15579,12 @@ ORDER BY val1;
 
 </div>
 </div>
-</div></div></section></section><section><section>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><h3>Meanwhile in pg 9.6...</h3>
-(Above steps were repeated using old syntax)</p>
-
+<h2 id="Meanwhile-in-pg-9.6...">Meanwhile in pg 9.6...<a class="anchor-link" href="#Meanwhile-in-pg-9.6...">&#182;</a></h2><h4 id="(Above-steps-were-repeated-using-old-syntax)">(Above steps were repeated using old syntax)<a class="anchor-link" href="#(Above-steps-were-repeated-using-old-syntax)">&#182;</a></h4>
 </div>
 </div>
 </div></section><section>
@@ -15708,11 +15592,13 @@ ORDER BY val1;
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Querying-foo-&amp;-bar">Querying foo &amp; bar<a class="anchor-link" href="#Querying-foo-&amp;-bar">&#182;</a></h3><p><br/></p>
 <div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="n">val1</span><span class="p">,</span> <span class="s1">&#39;foo&#39;</span> <span class="k">as</span> <span class="n">tbl</span> <span class="k">FROM</span> <span class="n">foo</span>
 <span class="k">UNION</span>
 <span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="n">val1</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span> <span class="k">as</span> <span class="n">tbl</span> <span class="k">FROM</span> <span class="n">bar</span>
 <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">val1</span><span class="p">;</span>
 </pre></div>
+<p><br/></p>
 <table>
 <thead><tr>
 <th>id</th>
@@ -15746,7 +15632,7 @@ ORDER BY val1;
 
 </div>
 </div>
-</div><div class="fragment">
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -15754,7 +15640,7 @@ ORDER BY val1;
 
 <pre><code>                        Table "public.bar"
  Column |  Type   |                    Modifiers                     
---------|---------|--------------------------------------------------
+--------+---------+-------------------------------------------------
  id     | integer | not null default nextval('foo_id_seq'::regclass)
  val1   | integer | 
 
@@ -15763,19 +15649,12 @@ Indexes:
 
 </div>
 </div>
-</div></div></section><section>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3>Dropping?</h3>
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Dropping?">Dropping?<a class="anchor-link" href="#Dropping?">&#182;</a></h3><p><br/></p>
 <div class="highlight"><pre><span></span><span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">foo</span><span class="p">;</span>
 <span class="n">ERROR</span><span class="p">:</span>  <span class="n">cannot</span> <span class="k">drop</span> <span class="k">table</span> <span class="n">foo</span> <span class="n">because</span> <span class="n">other</span> <span class="n">objects</span> <span class="n">depend</span> <span class="k">on</span> <span class="n">it</span>
 <span class="n">DETAIL</span><span class="p">:</span>  <span class="k">default</span> <span class="k">for</span> <span class="k">table</span> <span class="n">bar</span> <span class="k">column</span> <span class="n">id</span> <span class="n">depends</span> <span class="k">on</span> <span class="k">sequence</span> <span class="n">foo_id_seq</span>
@@ -15784,7 +15663,7 @@ Indexes:
 
 </div>
 </div>
-</div></div><div class="fragment">
+</div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -15800,6 +15679,7 @@ Indexes:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Inserting-again?">Inserting again?<a class="anchor-link" href="#Inserting-again?">&#182;</a></h3><p><br/></p>
 <div class="highlight"><pre><span></span><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">bar</span><span class="p">(</span><span class="n">val1</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mf">5</span><span class="p">);</span>
 <span class="n">ERROR</span><span class="p">:</span>  <span class="k">null</span> <span class="k">value</span> <span class="k">in</span> <span class="k">column</span> <span class="s s-Name">&quot;id&quot;</span> <span class="n">violates</span> <span class="k">not</span><span class="o">-</span><span class="k">null</span> <span class="k">constraint</span>
 <span class="n">DETAIL</span><span class="p">:</span>  <span class="n">Failing</span> <span class="k">row</span> <span class="n">contains</span> <span class="p">(</span><span class="k">null</span><span class="p">,</span> <span class="mf">5</span><span class="p">)</span><span class="mf">.</span>
@@ -15836,7 +15716,7 @@ Indexes:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1>Native partitioning</h1>
+<h1 id="2.-Native-partitioning">2. Native partitioning<a class="anchor-link" href="#2.-Native-partitioning">&#182;</a></h1>
 </div>
 </div>
 </div></section></section><section><section>
@@ -15844,10 +15724,12 @@ Indexes:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2>What is partitioning for?</h2><ul>
-     <li>Create another level of abstraction – we want to query only one (master) table</li>
-     <li>The data themselves should be dispatched to different child tables</li>
-</ul><p><a href="https://10clouds.com/blog/machine-learning-smog-app/">How Do You Fight Smog with Machine Learning? We Tried, and This Is What Happened</a></p>
+<h2 id="What-is-partitioning-for?">What is partitioning for?<a class="anchor-link" href="#What-is-partitioning-for?">&#182;</a></h2><ul>
+<li>Create another level of abstraction – we want to query only one (master) table</li>
+<li>The data themselves should be dispatched to different child tables
+<br /><br /><br /><br />
+<a href="https://10clouds.com/blog/machine-learning-smog-app/">How Do You Fight Smog with Machine Learning? We Tried, and This Is What Happened</a></li>
+</ul>
 
 </div>
 </div>
@@ -15856,13 +15738,35 @@ Indexes:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2>How to implement partitioning in Postgres?</h2><p><ol>
-    <li>Create a master table</li>
-    <li>Create as many child tables with datetime constraints as needed.</li>
-    <li>Create indices, keys, and other constraints on child tables.</li>
-    <li><s>Create a trigger on the master table that will dispatch rows to proper child tables before insert.</s></li>
-</ol></p>
-<div align="center"><iframe src="https://giphy.com/embed/l0HlKYxenTClHlOV2" width="480" height="271" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div>
+<h2 id="How-it-used-to-be?">How it used to be?<a class="anchor-link" href="#How-it-used-to-be?">&#182;</a></h2><ul>
+<li>Create a master table.</li>
+<li>Create as many inherited tables with datetime constraints as needed.</li>
+<li>Create indices, keys, and other constraints on child tables.</li>
+<li>Create a trigger on the master table that will dispatch rows to proper child tables before insert.</li>
+</ul>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="How-is-it-now?">How is it now?<a class="anchor-link" href="#How-is-it-now?">&#182;</a></h2><ul>
+<li>Create a master table, <strong>specify partitioning rule</strong>.</li>
+<li>Create as many <del>(inherited)</del> child tables with datetime constraints as needed.</li>
+<li>Create indices, keys, and other constraints on child tables.</li>
+<li><del>Create a trigger on the master table that will dispatch rows to proper child tables before insert.</del></li>
+</ul>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Implementation">Implementation<a class="anchor-link" href="#Implementation">&#182;</a></h2>
 </div>
 </div>
 </div></section><section>
@@ -15870,12 +15774,13 @@ Indexes:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Implementation">Implementation<a class="anchor-link" href="#Implementation">&#182;</a></h2><h3 id="1.-Create-master-table,-specify-partitioning-rule">1. Create master table, specify partitioning rule<a class="anchor-link" href="#1.-Create-master-table,-specify-partitioning-rule">&#182;</a></h3><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">measurement</span><span class="p">(</span>
-<span class="n">id</span> <span class="nb">INTEGER</span> <span class="n">GENERATED</span> <span class="k">ALWAYS</span> <span class="k">AS</span> <span class="k">IDENTITY</span><span class="p">,</span>
-<span class="n">datetime</span> <span class="nb">TIMESTAMPTZ</span><span class="p">,</span>
-<span class="n">site_id</span> <span class="nb">INTEGER</span><span class="p">,</span>
-<span class="n">pollutant_id</span> <span class="nb">INTEGER</span><span class="p">,</span>
-<span class="k">value</span> <span class="k">FLOAT</span><span class="p">)</span>
+<h3 id="1.-Create-master-table,-specify-partitioning-rule">1. Create master table, specify partitioning rule<a class="anchor-link" href="#1.-Create-master-table,-specify-partitioning-rule">&#182;</a></h3><p><br/></p>
+<div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">measurement</span><span class="p">(</span>
+  <span class="n">id</span> <span class="nb">INTEGER</span> <span class="n">GENERATED</span> <span class="k">ALWAYS</span> <span class="k">AS</span> <span class="k">IDENTITY</span><span class="p">,</span>
+  <span class="n">datetime</span> <span class="nb">TIMESTAMPTZ</span><span class="p">,</span>
+  <span class="n">site_id</span> <span class="nb">INTEGER</span><span class="p">,</span>
+  <span class="n">pollutant_id</span> <span class="nb">INTEGER</span><span class="p">,</span>
+  <span class="k">value</span> <span class="k">FLOAT</span><span class="p">)</span>
 <span class="k">PARTITION</span> <span class="k">BY</span> <span class="k">RANGE</span> <span class="p">(</span><span class="n">datetime</span><span class="p">);</span>
 </pre></div>
 
@@ -15886,7 +15791,8 @@ Indexes:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="2.-Create-a-couple-of-child-tables.-Define-data-range-limits-they-should-store">2. Create a couple of child tables. Define data range limits they should store<a class="anchor-link" href="#2.-Create-a-couple-of-child-tables.-Define-data-range-limits-they-should-store">&#182;</a></h3><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">measurement_201708</span>
+<h3 id="2.-Create-a-couple-of-child-tables.-Define-data-range-limits-they-should-store">2. Create a couple of child tables. Define data range limits they should store<a class="anchor-link" href="#2.-Create-a-couple-of-child-tables.-Define-data-range-limits-they-should-store">&#182;</a></h3><p><br/></p>
+<div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">measurement_201708</span>
 <span class="k">PARTITION</span> <span class="k">OF</span> <span class="n">measurement</span><span class="p">(</span><span class="n">datetime</span><span class="p">)</span>
 <span class="k">FOR</span> <span class="k">VALUES</span> <span class="k">FROM</span> <span class="p">(</span><span class="s1">&#39;2017-08-01&#39;</span><span class="p">)</span> <span class="k">TO</span> <span class="p">(</span><span class="s1">&#39;2017-09-01&#39;</span><span class="p">);</span>
 
@@ -15906,9 +15812,12 @@ Indexes:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="3.-Add-all-needed-keys-and-indices,-for-each-child-table">3. Add all needed keys and indices, for each child table<a class="anchor-link" href="#3.-Add-all-needed-keys-and-indices,-for-each-child-table">&#182;</a></h3><div class="highlight"><pre><span></span><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">measurement_201708</span> <span class="k">ADD</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">id</span><span class="p">);</span>
-<span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">measurement_201708</span> <span class="k">ADD</span> <span class="k">CONSTRAINT</span> <span class="n">fk_measurement_201708_site</span> <span class="k">FOREIGN</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">site_id</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="n">site</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
-<span class="k">CREATE</span> <span class="k">INDEX</span> <span class="n">idx_measurement_201708_datetime</span> <span class="k">ON</span> <span class="n">measurement_201708</span><span class="p">(</span><span class="n">datetime</span><span class="p">);</span>
+<h3 id="3.-Add-all-needed-keys-and-indices,-for-each-child-table">3. Add all needed keys and indices, for each child table<a class="anchor-link" href="#3.-Add-all-needed-keys-and-indices,-for-each-child-table">&#182;</a></h3><p><br/></p>
+<div class="highlight"><pre><span></span><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">measurement_201708</span> <span class="k">ADD</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">id</span><span class="p">);</span>
+<span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">measurement_201708</span> <span class="k">ADD</span> <span class="k">CONSTRAINT</span> <span class="n">fk_measurement_201708_site</span> 
+  <span class="k">FOREIGN</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">site_id</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="n">site</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+<span class="k">CREATE</span> <span class="k">INDEX</span> <span class="n">idx_measurement_201708_datetime</span> 
+  <span class="k">ON</span> <span class="n">measurement_201708</span><span class="p">(</span><span class="n">datetime</span><span class="p">);</span>
 </pre></div>
 
 </div>
@@ -15918,7 +15827,7 @@ Indexes:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2>Messing with partitions </h2>
+<h2 id="Messing-with-partitions">Messing with partitions<a class="anchor-link" href="#Messing-with-partitions">&#182;</a></h2>
 </div>
 </div>
 </div></section><section>
@@ -15926,228 +15835,63 @@ Indexes:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3>Insert</h3>
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10
-INSERT INTO measurement(datetime, site_id, pollutant_id, value)
-SELECT &#39;2017-08-01&#39;::TIMESTAMPTZ + ((random()*90)::int) * INTERVAL &#39;1 day&#39;,
-(1 + random()*(SELECT max(id)-1 FROM site))::int,
-(1 + random()*(SELECT max(id)-1 FROM pollutant))::int,
-random()
-FROM generate_series(1,1000);
+<h3 id="Insert">Insert<a class="anchor-link" href="#Insert">&#182;</a></h3><p><br/></p>
+<div class="highlight"><pre><span></span><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">measurement</span><span class="p">(</span>
+  <span class="n">datetime</span><span class="p">,</span> 
+  <span class="n">site_id</span><span class="p">,</span> 
+  <span class="n">pollutant_id</span><span class="p">,</span> 
+  <span class="k">value</span><span class="p">)</span>
+<span class="k">SELECT</span> 
+  <span class="s1">&#39;2017-08-01&#39;</span><span class="o">::</span><span class="nb">TIMESTAMPTZ</span> <span class="o">+</span> <span class="p">((</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mf">90</span><span class="p">)</span><span class="o">::</span><span class="nb">int</span><span class="p">)</span> <span class="o">*</span> <span class="nb">INTERVAL</span> <span class="s1">&#39;1 day&#39;</span><span class="p">,</span>
+  <span class="p">(</span><span class="mf">1</span> <span class="o">+</span> <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="p">(</span><span class="k">SELECT</span> <span class="n">max</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="o">-</span><span class="mf">1</span> <span class="k">FROM</span> <span class="n">site</span><span class="p">))</span><span class="o">::</span><span class="nb">int</span><span class="p">,</span>
+  <span class="p">(</span><span class="mf">1</span> <span class="o">+</span> <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="p">(</span><span class="k">SELECT</span> <span class="n">max</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="o">-</span><span class="mf">1</span> <span class="k">FROM</span> <span class="n">pollutant</span><span class="p">))</span><span class="o">::</span><span class="nb">int</span><span class="p">,</span>
+  <span class="n">random</span><span class="p">()</span>
+<span class="k">FROM</span> <span class="n">generate_series</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="mf">1000</span><span class="p">);</span>
 </pre></div>
 
 </div>
 </div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>1000 rows affected.
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[24]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[]</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div></div></section><section>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Select">Select<a class="anchor-link" href="#Select">&#182;</a></h3>
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10
-SELECT * FROM measurement WHERE datetime BETWEEN &#39;2017-09-20&#39; AND &#39;2017-09-27&#39; limit 5;
+<h3 id="Select">Select<a class="anchor-link" href="#Select">&#182;</a></h3><p><br/></p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">measurement</span> 
+<span class="k">WHERE</span> <span class="n">datetime</span> <span class="k">BETWEEN</span> <span class="s1">&#39;2017-09-20&#39;</span> <span class="k">AND</span> <span class="s1">&#39;2017-09-27&#39;</span><span class="p">;</span>
 </pre></div>
 
 </div>
 </div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>5 rows affected.
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[25]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<table>
-    <tr>
-        <th>id</th>
-        <th>datetime</th>
-        <th>site_id</th>
-        <th>pollutant_id</th>
-        <th>value</th>
-    </tr>
-    <tr>
-        <td>7</td>
-        <td>2017-09-21 00:00:00+00:00</td>
-        <td>3</td>
-        <td>3</td>
-        <td>0.194933926220983</td>
-    </tr>
-    <tr>
-        <td>37</td>
-        <td>2017-09-23 00:00:00+00:00</td>
-        <td>3</td>
-        <td>2</td>
-        <td>0.314075379632413</td>
-    </tr>
-    <tr>
-        <td>43</td>
-        <td>2017-09-20 00:00:00+00:00</td>
-        <td>1</td>
-        <td>1</td>
-        <td>0.374974506907165</td>
-    </tr>
-    <tr>
-        <td>45</td>
-        <td>2017-09-21 00:00:00+00:00</td>
-        <td>4</td>
-        <td>1</td>
-        <td>0.973794638644904</td>
-    </tr>
-    <tr>
-        <td>46</td>
-        <td>2017-09-22 00:00:00+00:00</td>
-        <td>2</td>
-        <td>3</td>
-        <td>0.00471486337482929</td>
-    </tr>
-</table>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div></div></section><section>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Explain?">Explain?<a class="anchor-link" href="#Explain?">&#182;</a></h3>
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10
-EXPLAIN SELECT * FROM measurement WHERE datetime BETWEEN &#39;2017-09-20&#39; AND &#39;2017-09-27&#39; limit 5;
+<h3 id="Explain">Explain<a class="anchor-link" href="#Explain">&#182;</a></h3><p><br/></p>
+<div class="highlight"><pre><span></span><span class="k">EXPLAIN</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">measurement</span> 
+<span class="k">WHERE</span> <span class="n">datetime</span> <span class="k">BETWEEN</span> <span class="s1">&#39;2017-09-20&#39;</span> <span class="k">AND</span> <span class="s1">&#39;2017-09-27&#39;</span><span class="p">;</span>
 </pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>6 rows affected.
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[29]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
+<p><br/></p>
 <table>
-    <tr>
-        <th>QUERY PLAN</th>
-    </tr>
-    <tr>
-        <td>Limit  (cost=4.22..11.48 rows=5 width=28)</td>
-    </tr>
-    <tr>
-        <td>&nbsp;&nbsp;-&gt;  Append  (cost=4.22..14.39 rows=7 width=28)</td>
-    </tr>
-    <tr>
-        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Bitmap Heap Scan on measurement_201709  (cost=4.22..14.39 rows=7 width=28)</td>
-    </tr>
-    <tr>
-        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Recheck Cond: ((datetime &gt;= &#x27;2017-09-20 00:00:00+00&#x27;::timestamp with time zone) AND (datetime &lt;= &#x27;2017-09-27 00:00:00+00&#x27;::timestamp with time zone))</td>
-    </tr>
-    <tr>
-        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Bitmap Index Scan on idx_measurement_201709_datetime  (cost=0.00..4.22 rows=7 width=0)</td>
-    </tr>
-    <tr>
-        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Index Cond: ((datetime &gt;= &#x27;2017-09-20 00:00:00+00&#x27;::timestamp with time zone) AND (datetime &lt;= &#x27;2017-09-27 00:00:00+00&#x27;::timestamp with time zone))</td>
-    </tr>
+<thead><tr>
+<th>QUERY PLAN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td></td>
+</tr>
+<tr>
+<td>Bitmap Index Scan on idx_measurement_201709_datetime (cost=0.00..4.22 rows=7 width=0)</td>
+<td></td>
+</tr>
+</tbody>
 </table>
-</div>
-
-</div>
 
 </div>
 </div>
-
 </div><aside class="notes">
 
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
@@ -16155,17 +15899,17 @@ EXPLAIN SELECT * FROM measurement WHERE datetime BETWEEN &#39;2017-09-20&#39; AN
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Tell that you can use inspect db to create a model in django with fake migration, write a function that creates new partitions with keys etc., trigger it once a month</p>
+<p>Also there should be a big performance boost on inserts vs old approach</p>
 
 </div>
 </div>
 </div>
-</aside></div></section></section><section><section>
+</aside></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><h1>Multicolumn statistics</h1></p>
-<h2>aka correlated statistics</h2>
+<h1 id="3.-Multicolumn-statistics">3. Multicolumn statistics<a class="anchor-link" href="#3.-Multicolumn-statistics">&#182;</a></h1><h2 id="aka-correlated-statistics">aka correlated statistics<a class="anchor-link" href="#aka-correlated-statistics">&#182;</a></h2>
 </div>
 </div>
 </div></section></section><section><section>
@@ -16173,17 +15917,26 @@ EXPLAIN SELECT * FROM measurement WHERE datetime BETWEEN &#39;2017-09-20&#39; AN
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="How-does-postgres-estimate-number-of-returned-rows?">How does postgres estimate number of returned rows?<a class="anchor-link" href="#How-does-postgres-estimate-number-of-returned-rows?">&#182;</a></h2><p><br/></p>
 <div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> 
 <span class="k">FROM</span> <span class="n">SOME_TABLE</span> 
 <span class="k">WHERE</span> <span class="n">col1</span> <span class="o">=</span> <span class="n">cond1</span>
-    <span class="k">AND</span> <span class="n">col2</span> <span class="o">=</span> <span class="n">cond2</span>
-    <span class="k">AND</span> <span class="n">col3</span> <span class="o">=</span> <span class="n">cond3</span><span class="p">;</span>
+  <span class="k">AND</span> <span class="n">col2</span> <span class="o">=</span> <span class="n">cond2</span>
+  <span class="k">AND</span> <span class="n">col3</span> <span class="o">=</span> <span class="n">cond3</span><span class="p">;</span>
 </pre></div>
-<h3 id="How-postgres-process-such-queries?">How postgres process such queries?<a class="anchor-link" href="#How-postgres-process-such-queries?">&#182;</a></h3><p>$$rows\,to\,retrieve=total\,number\,of\,rows *p_{predicate\,1}*p_{predicate\,2}*p_{predicate\,3}$$</p>
 
 </div>
 </div>
-</div></section><section>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>$$rows\,to\,retrieve=total\,number\,of\,rows *p_{predicate\,1}*p_{predicate\,2}*p_{predicate\,3}$$</p>
+
+</div>
+</div>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -16196,16 +15949,76 @@ EXPLAIN SELECT * FROM measurement WHERE datetime BETWEEN &#39;2017-09-20&#39; AN
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Let's-do-some-math!">Let's do some math!<a class="anchor-link" href="#Let's-do-some-math!">&#182;</a></h2>
+<h2 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h2>
 </div>
 </div>
 </div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">counting_log</span> <span class="p">(</span>
+  <span class="n">id</span> <span class="nb">INT</span> <span class="n">GENERATED</span> <span class="k">ALWAYS</span> <span class="k">AS</span> <span class="k">IDENTITY</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span> 
+  <span class="n">datetime</span> <span class="nb">TIMESTAMP</span> <span class="nb">WITH TIME ZONE</span><span class="p">,</span> 
+  <span class="n">child_id</span> <span class="nb">INTEGER</span><span class="p">,</span> 
+  <span class="n">word</span> <span class="nb">TEXT</span><span class="p">);</span>
+</pre></div>
+<p><br/></p>
+<table>
+<thead><tr>
+<th>id</th>
+<th>datetime</th>
+<th>child_id</th>
+<th>word</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>'2017-11-08 12:00:00'</td>
+<td>123</td>
+<td>'eeny'</td>
+</tr>
+<tr>
+<td>2</td>
+<td>'2017-11-08 15:30:00'</td>
+<td>130</td>
+<td>'meeny'</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">counting_log</span><span class="p">(</span>
+  <span class="n">datetime</span><span class="p">,</span>
+  <span class="n">child_id</span><span class="p">,</span> 
+  <span class="n">word</span><span class="p">)</span>
+<span class="k">SELECT</span> 
+  <span class="k">current_timestamp</span><span class="p">,</span> 
+  <span class="n">i</span><span class="o">%</span><span class="mf">1000</span><span class="p">,</span> 
+  <span class="k">CASE</span> <span class="k">WHEN</span> <span class="n">i</span><span class="o">%</span><span class="mf">4</span><span class="o">=</span><span class="mf">1</span> <span class="k">THEN</span> <span class="s1">&#39;eeny&#39;</span> 
+    <span class="k">WHEN</span> <span class="n">i</span><span class="o">%</span><span class="mf">4</span><span class="o">=</span><span class="mf">2</span> <span class="k">THEN</span> <span class="s1">&#39;meeny&#39;</span> 
+    <span class="k">WHEN</span> <span class="n">i</span><span class="o">%</span><span class="mf">4</span><span class="o">=</span><span class="mf">3</span> <span class="k">THEN</span> <span class="s1">&#39;miny&#39;</span> 
+    <span class="k">WHEN</span> <span class="n">i</span><span class="o">%</span><span class="mf">4</span><span class="o">=</span><span class="mf">0</span> <span class="k">THEN</span> <span class="s1">&#39;moe&#39;</span> 
+    <span class="k">ELSE</span> <span class="s1">&#39;nope&#39;</span> <span class="k">END</span> 
+<span class="k">FROM</span> <span class="n">generate_series</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span> <span class="mf">1000000</span><span class="p">)</span> <span class="n">i</span><span class="p">;</span>
+</pre></div>
+
+</div>
+</div>
+</div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[37]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10 
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10 
 EXPLAIN SELECT datetime FROM counting_log WHERE child_id=123;
 </pre></div>
 
@@ -16259,13 +16072,21 @@ EXPLAIN SELECT datetime FROM counting_log WHERE child_id=123;
 </div>
 </div>
 
-</div></div><div class="fragment">
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Estimated-971-rows-with-child_id=123">Estimated 971 rows with child_id=123<a class="anchor-link" href="#Estimated-971-rows-with-child_id=123">&#182;</a></h3>
+</div>
+</div>
+</div></div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[38]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10 
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10 
 EXPLAIN SELECT datetime FROM counting_log WHERE word=&#39;miny&#39;;
 </pre></div>
 
@@ -16313,12 +16134,20 @@ EXPLAIN SELECT datetime FROM counting_log WHERE word=&#39;miny&#39;;
 </div>
 </div>
 
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Estimated-252867-rows-with-word='miny'">Estimated 252867 rows with word='miny'<a class="anchor-link" href="#Estimated-252867-rows-with-word='miny'">&#182;</a></h3>
+</div>
+</div>
 </div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>$$rows\,to\,retrieve=total\,number\,of\,rows *p_{predicate\,1}*p_{predicate\,2}\\
+<h2 id="Let's-do-some-math!">Let's do some math!<a class="anchor-link" href="#Let's-do-some-math!">&#182;</a></h2><p>$$rows\,to\,retrieve=total\,number\,of\,rows *p_{predicate\,1}*p_{predicate\,2}\\
 =1000000*\frac{971}{1000000}*\frac{252867}{1000000}\approx 245.534$$</p>
 
 </div>
@@ -16329,7 +16158,7 @@ EXPLAIN SELECT datetime FROM counting_log WHERE word=&#39;miny&#39;;
 <div class="prompt input_prompt">In&nbsp;[40]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10 
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10 
 EXPLAIN SELECT datetime FROM counting_log WHERE word=&#39;miny&#39; and child_id=123;
 </pre></div>
 
@@ -16400,7 +16229,7 @@ EXPLAIN SELECT datetime FROM counting_log WHERE word=&#39;miny&#39; and child_id
 <div class="prompt input_prompt">In&nbsp;[49]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10 
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10 
 SELECT count(datetime) FROM counting_log WHERE word=&#39;miny&#39; and child_id=123;
 </pre></div>
 
@@ -16450,7 +16279,8 @@ SELECT count(datetime) FROM counting_log WHERE word=&#39;miny&#39; and child_id=
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 align="center">245 != 1000</h1>
+<h1><div style="text-align: center">245 != 1000</h1>
+
 </div>
 </div>
 </div></section></section><section><section>
@@ -16458,7 +16288,8 @@ SELECT count(datetime) FROM counting_log WHERE word=&#39;miny&#39; and child_id=
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="What-if?">What if?<a class="anchor-link" href="#What-if?">&#182;</a></h2><ul>
+<h2 id="What-if?">What if?<a class="anchor-link" href="#What-if?">&#182;</a></h2><p><br/><br/></p>
+<ul>
 <li>We actually wanted to join another table to above results (i.e. children info)?</li>
 <li>... and because of such big underestimation query planner chose to use nested loop instead of hash join?</li>
 <li>... and we had more tables to join with <strong>a lot</strong> more data in it?</li>
@@ -16479,7 +16310,7 @@ SELECT count(datetime) FROM counting_log WHERE word=&#39;miny&#39; and child_id=
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="https://upload.wikimedia.org/wikipedia/en/thumb/8/82/Reddit_logo_and_wordmark.svg/1280px-Reddit_logo_and_wordmark.svg.png" style="background: #100727"></p>
+<p><img src="https://upload.wikimedia.org/wikipedia/en/thumb/8/82/Reddit_logo_and_wordmark.svg/1280px-Reddit_logo_and_wordmark.svg.png" style="background: #FFFFFF"></p>
 
 </div>
 </div>
@@ -16518,73 +16349,16 @@ SELECT count(datetime) FROM counting_log WHERE word=&#39;miny&#39; and child_id=
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[44]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10
-CREATE STATISTICS st_counting_log_child_id_word ON child_id, word FROM counting_log;
-
-ANALYZE counting_log;
-EXPLAIN SELECT datetime FROM counting_log WHERE word=&#39;miny&#39; and child_id=123;
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">STATISTICS</span> <span class="n">st_counting_log_child_id_word</span> 
+  <span class="k">ON</span> <span class="n">child_id</span><span class="p">,</span> <span class="n">word</span> <span class="k">FROM</span> <span class="n">counting_log</span><span class="p">;</span>
 </pre></div>
 
 </div>
 </div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Done.
-Done.
-5 rows affected.
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[44]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<table>
-    <tr>
-        <th>QUERY PLAN</th>
-    </tr>
-    <tr>
-        <td>Bitmap Heap Scan on counting_log  (cost=19.92..2690.43 rows=967 width=8)</td>
-    </tr>
-    <tr>
-        <td>&nbsp;&nbsp;Recheck Cond: (child_id = 123)</td>
-    </tr>
-    <tr>
-        <td>&nbsp;&nbsp;Filter: (word = &#x27;miny&#x27;::text)</td>
-    </tr>
-    <tr>
-        <td>&nbsp;&nbsp;-&gt;  Bitmap Index Scan on idx_counting_log_child_id  (cost=0.00..19.68 rows=967 width=0)</td>
-    </tr>
-    <tr>
-        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Index Cond: (child_id = 123)</td>
-    </tr>
-</table>
-</div>
-
-</div>
-
-</div>
-</div>
-
 </div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
@@ -16598,7 +16372,7 @@ Done.
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="More-parallelism!">More parallelism!<a class="anchor-link" href="#More-parallelism!">&#182;</a></h1>
+<h1 id="4.-More-parallelism!">4. More parallelism!<a class="anchor-link" href="#4.-More-parallelism!">&#182;</a></h1>
 </div>
 </div>
 </div></section></section><section><section>
@@ -16606,8 +16380,9 @@ Done.
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Parallel-queries-in-Postgres-so-far">Parallel queries in Postgres so far<a class="anchor-link" href="#Parallel-queries-in-Postgres-so-far">&#182;</a></h2><ul>
-<li>Parallel queries were introduced in postgres 9.6<ul>
+<h2 id="Parallel-queries-in-Postgres-so-far">Parallel queries in Postgres so far<a class="anchor-link" href="#Parallel-queries-in-Postgres-so-far">&#182;</a></h2><p><br/><br/></p>
+<ul>
+<li>Postgres 9.6:<ul>
 <li>Parallel Scans<ul>
 <li>Sequential scan only</li>
 </ul>
@@ -16629,8 +16404,9 @@ Done.
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="With-pg10-we-also-get:">With pg10 we also get:<a class="anchor-link" href="#With-pg10-we-also-get:">&#182;</a></h2><ul>
-<li>Parallel queries were introduced in postgres 9.6<ul>
+<h2 id="With-pg10-we-also-get:">With pg10 we also get:<a class="anchor-link" href="#With-pg10-we-also-get:">&#182;</a></h2><p><br/><br/></p>
+<ul>
+<li>Postgres 10:<ul>
 <li>Parallel Scans<ul>
 <li>sequential scan only</li>
 <li><strong>bitmap heap scan</strong></li>
@@ -16664,184 +16440,124 @@ Done.
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Minimal-size-of-a-table-for-which-parallelism-can-be-triggered">Minimal size of a table for which parallelism can be triggered<a class="anchor-link" href="#Minimal-size-of-a-table-for-which-parallelism-can-be-triggered">&#182;</a></h3>
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10
-show min_parallel_table_scan_size
+<h3 id="Minimal-size-of-a-table-for-which-parallelism-can-be-triggered">Minimal size of a table for which parallelism can be triggered<a class="anchor-link" href="#Minimal-size-of-a-table-for-which-parallelism-can-be-triggered">&#182;</a></h3><p><br/></p>
+<div class="highlight"><pre><span></span><span class="k">show</span> <span class="n">min_parallel_table_scan_size</span><span class="p">;</span>
 </pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>1 rows affected.
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[2]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
+<p><br/></p>
 <table>
-    <tr>
-        <th>min_parallel_table_scan_size</th>
-    </tr>
-    <tr>
-        <td>8MB</td>
-    </tr>
+<thead><tr>
+<th>min_parallel_table_scan_size</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8MB</td>
+<td></td>
+</tr>
+</tbody>
 </table>
-</div>
-
-</div>
 
 </div>
 </div>
-
-</div></div></section><section>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Minimal-size-of-a-index-for-which-parallelism-can-be-triggered">Minimal size of a index for which parallelism can be triggered<a class="anchor-link" href="#Minimal-size-of-a-index-for-which-parallelism-can-be-triggered">&#182;</a></h3>
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10
-show min_parallel_index_scan_size
+<h3 id="Minimal-size-of-a-index-for-which-parallelism-can-be-triggered">Minimal size of a index for which parallelism can be triggered<a class="anchor-link" href="#Minimal-size-of-a-index-for-which-parallelism-can-be-triggered">&#182;</a></h3><p><br/></p>
+<div class="highlight"><pre><span></span><span class="k">show</span> <span class="n">min_parallel_index_scan_size</span><span class="p">;</span>
 </pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>1 rows affected.
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[4]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
+<p><br/></p>
 <table>
-    <tr>
-        <th>min_parallel_index_scan_size</th>
-    </tr>
-    <tr>
-        <td>512kB</td>
-    </tr>
+<thead><tr>
+<th>min_parallel_index_scan_size</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>512kB</td>
+<td></td>
+</tr>
+</tbody>
 </table>
-</div>
-
-</div>
 
 </div>
 </div>
-
-</div></div></section><section>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Maximum-number-of-parallel-workers-to-be-used">Maximum number of parallel workers to be used<a class="anchor-link" href="#Maximum-number-of-parallel-workers-to-be-used">&#182;</a></h3>
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10
-show max_parallel_workers
+<h3 id="Maximum-number-of-parallel-workers-to-be-used">Maximum number of parallel workers to be used<a class="anchor-link" href="#Maximum-number-of-parallel-workers-to-be-used">&#182;</a></h3><p><br/></p>
+<div class="highlight"><pre><span></span><span class="k">show</span> <span class="n">max_parallel_workers</span><span class="p">;</span>
 </pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>1 rows affected.
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[5]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
+<p><br/></p>
 <table>
-    <tr>
-        <th>max_parallel_workers</th>
-    </tr>
-    <tr>
-        <td>8</td>
-    </tr>
+<thead><tr>
+<th>max_parallel_workers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8</td>
+<td></td>
+</tr>
+</tbody>
 </table>
-</div>
-
-</div>
 
 </div>
 </div>
-
-</div></div></section></section><section><section>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Example-time">Example time<a class="anchor-link" href="#Example-time">&#182;</a></h2>
+<h2 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h2>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">trigonometry</span> 
+<span class="k">AS</span> 
+<span class="k">SELECT</span> 
+  <span class="n">i</span> <span class="k">AS</span> <span class="n">arg</span><span class="p">,</span> 
+  <span class="n">sin</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">AS</span> <span class="n">sine</span><span class="p">,</span> 
+  <span class="n">cos</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">AS</span> <span class="n">cosine</span><span class="p">,</span> 
+  <span class="n">tan</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">AS</span> <span class="n">tangent</span> 
+<span class="k">FROM</span> <span class="n">generate_series</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span> <span class="mf">100000</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span> <span class="n">i</span><span class="p">;</span>
+
+<span class="k">CREATE</span> <span class="k">INDEX</span> <span class="n">idx_trigonometry_arg</span> <span class="k">ON</span> <span class="n">trigonometry</span><span class="p">(</span><span class="n">arg</span><span class="p">);</span>
+<span class="k">CREATE</span> <span class="k">INDEX</span> <span class="n">idx_trigonometry_sine</span> <span class="k">ON</span> <span class="n">trigonometry</span><span class="p">(</span><span class="n">sine</span><span class="p">);</span>
+<span class="k">CREATE</span> <span class="k">INDEX</span> <span class="n">idx_trigonometry_cosine</span> <span class="k">ON</span> <span class="n">trigonometry</span><span class="p">(</span><span class="n">cosine</span><span class="p">);</span>
+</pre></div>
+<p><br/></p>
+<table>
+<thead><tr>
+<th>arg</th>
+<th>sine</th>
+<th>cosine</th>
+<th>tangent        </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>     0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>  0.01</td>
+<td>0.00999983333416666</td>
+<td>0.999950000416665</td>
+<td>0.0100003333466672</td>
+</tr>
+</tbody>
+</table>
+
 </div>
 </div>
 </div></section><section>
@@ -16853,83 +16569,48 @@ show max_parallel_workers
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10
-EXPLAIN ANALYZE SELECT count(arg) FROM trigonometry WHERE arg &gt; 50000;
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="k">EXPLAIN</span> <span class="k">SELECT</span> <span class="n">count</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">trigonometry</span> <span class="k">WHERE</span> <span class="n">arg</span> <span class="o">&gt;</span> <span class="mf">50000</span><span class="p">;</span>
 </pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>10 rows affected.
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[22]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
+<p><br/></p>
 <table>
-    <tr>
-        <th>QUERY PLAN</th>
-    </tr>
-    <tr>
-        <td>Finalize Aggregate  (cost=140633.42..140633.43 rows=1 width=8) (actual time=1129.714..1129.714 rows=1 loops=1)</td>
-    </tr>
-    <tr>
-        <td>&nbsp;&nbsp;-&gt;  Gather  (cost=140633.20..140633.41 rows=2 width=8) (actual time=1129.676..1129.709 rows=3 loops=1)</td>
-    </tr>
-    <tr>
-        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Planned: 2</td>
-    </tr>
-    <tr>
-        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Launched: 2</td>
-    </tr>
-    <tr>
-        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=139633.20..139633.21 rows=1 width=8) (actual time=1125.419..1125.419 rows=1 loops=3)</td>
-    </tr>
-    <tr>
-        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on trigonometry  (cost=0.00..134441.63 rows=2076628 width=8) (actual time=413.910..946.126 rows=1666667 loops=3)</td>
-    </tr>
-    <tr>
-        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filter: (arg &gt; '50000'::numeric)</td>
-    </tr>
-    <tr>
-        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rows Removed by Filter: 1666667</td>
-    </tr>
-    <tr>
-        <td>Planning time: 0.174 ms</td>
-    </tr>
-    <tr>
-        <td>Execution time: 1135.755 ms</td>
-    </tr>
+<thead><tr>
+<th>QUERY PLAN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> Finalize Aggregate  (cost=138908.78..138908.79 rows=1 width=8)</td>
+<td></td>
+</tr>
+<tr>
+<td>   -&gt;  Gather  (cost=138908.56..138908.77 rows=2 width=8)</td>
+<td></td>
+</tr>
+<tr>
+<td>         Workers Planned: 2</td>
+<td></td>
+</tr>
+<tr>
+<td>         -&gt;  Partial Aggregate  (cost=137908.56..137908.57 rows=1 width=8)</td>
+<td></td>
+</tr>
+<tr>
+<td>               -&gt;  Parallel Seq Scan on trigonometry  (cost=0.00..134436.34 rows=1388889 width=32)</td>
+<td></td>
+</tr>
+<tr>
+<td>                     Filter: (arg &gt; '50000'::numeric)</td>
+<td></td>
+</tr>
+</tbody>
 </table>
-</div>
-
-</div>
 
 </div>
 </div>
-
 </div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
@@ -16939,128 +16620,69 @@ EXPLAIN ANALYZE SELECT count(arg) FROM trigonometry WHERE arg &gt; 50000;
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10
-EXPLAIN ANALYZE SELECT * FROM trigonometry WHERE arg &gt; 50000;
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="k">EXPLAIN</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">trigonometry</span> <span class="k">WHERE</span> <span class="n">arg</span> <span class="o">&gt;</span> <span class="mf">50000</span><span class="p">;</span>
 </pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>4 rows affected.
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[23]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
+<p><br/></p>
 <table>
-    <tr>
-        <th>QUERY PLAN</th>
-    </tr>
-    <tr>
-        <td>Index Scan using idx_trigonometry_arg on trigonometry  (cost=0.43..202545.83 rows=4983908 width=32) (actual time=0.079..1444.759 rows=5000000 loops=1)</td>
-    </tr>
-    <tr>
-        <td>&nbsp;&nbsp;Index Cond: (arg &gt; '50000'::numeric)</td>
-    </tr>
-    <tr>
-        <td>Planning time: 0.115 ms</td>
-    </tr>
-    <tr>
-        <td>Execution time: 1645.573 ms</td>
-    </tr>
+<thead><tr>
+<th>QUERY PLAN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> Index Scan using idx_trigonometry_arg on trigonometry  (cost=0.43..202722.77 rows=4988362 width=32)</td>
+<td></td>
+</tr>
+<tr>
+<td>   Index Cond: (arg &gt; '50000'::numeric)</td>
+<td></td>
+</tr>
+</tbody>
 </table>
-</div>
-
-</div>
 
 </div>
 </div>
-
 </div></div></section><section>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10
-SET parallel_setup_cost=100;
-EXPLAIN ANALYZE SELECT * FROM trigonometry WHERE arg &gt; 50000;
-</pre></div>
-
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Parallel-index-scan-(2nd-attempt)">Parallel index scan (2nd attempt)<a class="anchor-link" href="#Parallel-index-scan-(2nd-attempt)">&#182;</a></h3>
 </div>
 </div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Done.
-4 rows affected.
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[24]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<table>
-    <tr>
-        <th>QUERY PLAN</th>
-    </tr>
-    <tr>
-        <td>Index Scan using idx_trigonometry_arg on trigonometry  (cost=0.43..202545.83 rows=4983908 width=32) (actual time=0.070..1223.772 rows=5000000 loops=1)</td>
-    </tr>
-    <tr>
-        <td>&nbsp;&nbsp;Index Cond: (arg &gt; '50000'::numeric)</td>
-    </tr>
-    <tr>
-        <td>Planning time: 0.097 ms</td>
-    </tr>
-    <tr>
-        <td>Execution time: 1396.401 ms</td>
-    </tr>
-</table>
-</div>
-
-</div>
-
-</div>
-</div>
-
 </div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="k">SET</span> <span class="n">parallel_setup_cost</span><span class="o">=</span><span class="mf">100</span><span class="p">;</span>
+<span class="k">EXPLAIN</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">trigonometry</span> <span class="k">WHERE</span> <span class="n">arg</span> <span class="o">&gt;</span> <span class="mf">50000</span><span class="p">;</span>
+</pre></div>
+<p><br/></p>
+<table>
+<thead><tr>
+<th>QUERY PLAN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> Index Scan using idx_trigonometry_arg on trigonometry  (cost=0.43..202722.77 rows=4988362 width=32)</td>
+<td></td>
+</tr>
+<tr>
+<td>   Index Cond: (arg &gt; '50000'::numeric)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -17069,83 +16691,55 @@ EXPLAIN ANALYZE SELECT * FROM trigonometry WHERE arg &gt; 50000;
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10
-SET parallel_setup_cost=1000;
-EXPLAIN ANALYZE SELECT arg FROM trigonometry WHERE sine &gt; 0.999 AND arg &gt;100 AND arg &lt; 10000;
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Parallel-index-scan-(one-more-try)">Parallel index scan (one more try)<a class="anchor-link" href="#Parallel-index-scan-(one-more-try)">&#182;</a></h3>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="k">SET</span> <span class="n">parallel_setup_cost</span><span class="o">=</span><span class="mf">1000</span><span class="p">;</span>
+<span class="k">EXPLAIN</span> <span class="k">SELECT</span> <span class="n">arg</span> <span class="k">FROM</span> <span class="n">trigonometry</span> 
+        <span class="k">WHERE</span> <span class="n">sine</span> <span class="o">&gt;</span> <span class="mf">0.999</span> <span class="k">AND</span> <span class="n">arg</span> <span class="o">&gt;</span><span class="mf">100</span> <span class="k">AND</span> <span class="n">arg</span> <span class="o">&lt;</span> <span class="mf">10000</span><span class="p">;</span>
 </pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Done.
-9 rows affected.
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[27]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
+<p><br/></p>
 <table>
-    <tr>
-        <th>QUERY PLAN</th>
-    </tr>
-    <tr>
-        <td>Gather  (cost=1000.43..40533.65 rows=13430 width=8) (actual time=0.516..147.479 rows=14097 loops=1)</td>
-    </tr>
-    <tr>
-        <td>&nbsp;&nbsp;Workers Planned: 2</td>
-    </tr>
-    <tr>
-        <td>&nbsp;&nbsp;Workers Launched: 2</td>
-    </tr>
-    <tr>
-        <td>&nbsp;&nbsp;-&gt;  Parallel Index Scan using idx_trigonometry_arg on trigonometry  (cost=0.43..38190.65 rows=5596 width=8) (actual time=0.366..142.974 rows=4699 loops=3)</td>
-    </tr>
-    <tr>
-        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Index Cond: ((arg &gt; '100'::numeric) AND (arg &lt; '10000'::numeric))</td>
-    </tr>
-    <tr>
-        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filter: (sine &gt; '0.999'::double precision)</td>
-    </tr>
-    <tr>
-        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rows Removed by Filter: 325301</td>
-    </tr>
-    <tr>
-        <td>Planning time: 0.286 ms</td>
-    </tr>
-    <tr>
-        <td>Execution time: 153.849 ms</td>
-    </tr>
+<thead><tr>
+<th>QUERY PLAN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> Gather  (cost=1000.43..40550.21 rows=13356 width=8)</td>
+<td></td>
+</tr>
+<tr>
+<td>   Workers Planned: 2</td>
+<td></td>
+</tr>
+<tr>
+<td>   -&gt;  Parallel Index Scan using idx_trigonometry_arg on trigonometry  (cost=0.43..38214.61 rows=5565 width=8)</td>
+<td></td>
+</tr>
+<tr>
+<td>         Index Cond: ((arg &gt; '100'::numeric) AND (arg &lt; '10000'::numeric))</td>
+<td></td>
+</tr>
+<tr>
+<td>         Filter: (sine &gt; '0.999'::double precision)</td>
+<td></td>
+</tr>
+</tbody>
 </table>
-</div>
-
-</div>
 
 </div>
 </div>
-
-</div></section></section><section><section>
+</div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -17154,98 +16748,89 @@ EXPLAIN ANALYZE SELECT arg FROM trigonometry WHERE sine &gt; 0.999 AND arg &gt;1
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10
-SET max_parallel_workers =0;
-SET force_parallel_mode=on;
-EXPLAIN ANALYZE SELECT arg FROM trigonometry WHERE sine &gt; 0.999 AND arg &gt;100 AND arg &lt; 10000;
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="k">SET</span> <span class="n">max_parallel_workers</span><span class="o">=</span><span class="mf">0</span><span class="p">;</span>
+<span class="k">SET</span> <span class="n">force_parallel_mode</span><span class="o">=</span><span class="k">on</span><span class="p">;</span>
+<span class="k">EXPLAIN</span> <span class="k">ANALYZE</span> <span class="k">SELECT</span> <span class="n">arg</span> <span class="k">FROM</span> <span class="n">trigonometry</span> 
+                <span class="k">WHERE</span> <span class="n">sine</span> <span class="o">&gt;</span> <span class="mf">0.999</span> <span class="k">AND</span> <span class="n">arg</span> <span class="o">&gt;</span><span class="mf">100</span> <span class="k">AND</span> <span class="n">arg</span> <span class="o">&lt;</span> <span class="mf">10000</span><span class="p">;</span>
 </pre></div>
 
 </div>
 </div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Done.
-Done.
-9 rows affected.
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[28]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <table>
-    <tr>
-        <th>QUERY PLAN</th>
-    </tr>
-    <tr>
-        <td>Gather  (cost=1000.43..40533.65 rows=13430 width=8) (actual time=0.269..259.633 rows=14097 loops=1)</td>
-    </tr>
-    <tr>
-        <td>&nbsp;&nbsp;Workers Planned: 2</td>
-    </tr>
-    <tr>
-        <td>&nbsp;&nbsp;Workers Launched: 0</td>
-    </tr>
-    <tr>
-        <td>&nbsp;&nbsp;-&gt;  Parallel Index Scan using idx_trigonometry_arg on trigonometry  (cost=0.43..38190.65 rows=5596 width=8) (actual time=0.073..257.811 rows=14097 loops=1)</td>
-    </tr>
-    <tr>
-        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Index Cond: ((arg &gt; '100'::numeric) AND (arg &lt; '10000'::numeric))</td>
-    </tr>
-    <tr>
-        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filter: (sine &gt; '0.999'::double precision)</td>
-    </tr>
-    <tr>
-        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rows Removed by Filter: 975902</td>
-    </tr>
-    <tr>
-        <td>Planning time: 0.156 ms</td>
-    </tr>
-    <tr>
-        <td>Execution time: 260.346 ms</td>
-    </tr>
+<thead><tr>
+<th>QUERY PLAN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> Gather  (cost=1000.43..40550.21 rows=13356 width=8) (actual time=1.015..238.902 rows=14097 loops=1)</td>
+<td></td>
+</tr>
+<tr>
+<td>   Workers Planned: 2</td>
+<td></td>
+</tr>
+<tr>
+<td>   Workers Launched: 0</td>
+<td></td>
+</tr>
+<tr>
+<td>   ...</td>
+<td></td>
+</tr>
+</tbody>
 </table>
-</div>
-
-</div>
 
 </div>
 </div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Full-text-search-support-JSON-&amp;-JSONB-columns">Full text search support JSON &amp; JSONB columns<a class="anchor-link" href="#Full-text-search-support-JSON-&amp;-JSONB-columns">&#182;</a></h1>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Wait,-there's-even-more">Wait, there's even more<a class="anchor-link" href="#Wait,-there's-even-more">&#182;</a></h1>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>logical replication</li>
+<li>quorum commit for synchronous replication</li>
+<li>XML tables</li>
+<li>SCRAM authentication</li>
+<li>renaming of some functions</li>
+<li>\if \elif \else statements in psql</li>
+<li>...</li>
+</ul>
 
-</div></section></section><section><section>
+</div>
+</div>
+</div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1>Full text search support JSON & JSONB columns</h1>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1>Wait, there's even more</h1>
+<h1 id="Questions?">Questions?<a class="anchor-link" href="#Questions?">&#182;</a></h1>
 </div>
 </div>
 </div></section></section><section><section>
@@ -17253,23 +16838,7 @@ Done.
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1>Wrapping it up</h1>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 align="center">Questions?</h1>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 align="center">Thank you!</h1>
+<h1 id="Thank-you!">Thank you!<a class="anchor-link" href="#Thank-you!">&#182;</a></h1>
 </div>
 </div>
 </div></section></section>

@@ -6,11 +6,52 @@ div#notebook {
  -webkit-font-smoothing: antialiased !important;
 }
 span.mrow {
- color: #FFFFFF
+ color: #FFFFFF;
 }
-.reveal .progress span {
- background: #00FDBD;
+.highlight .k {
+ color: #5934E7;
 }
+.highlight .nb {
+ color: #5934E7;
+}
+.highlight .s1, .s2{
+ color: #00FDBD !important;
+}
+.highlight .s{
+ color: #00FDBD;
+}
+.highlight .mf{
+ color: #FFFFFF;
+}
+.highlight .n{
+ color: #FFFFFF;
+}
+.highlight .p{
+ color: #FFFFFF;
+}
+.highlight .o{
+ color: #FFFFFF;
+}
+.highlight .m{
+ color: #FFFFFF;
+}
+body {
+    background-color: #000001;
+    background-image: url("https://10clouds.com/wp-content/themes/thegem/dist/images/10clouds-logo.svg");
+    background-position: right top;
+    background-repeat: no-repeat;
+    background-origin: content-box;
+    padding-right: 20px;
+    padding-top: 10px;
+    background-size: 200px 150px;
+}
+div.progress{
+ background: #5934E7 !important;
+}
+.reveal .progress span{
+ background: #00FDBD !important;
+}
+
 body,
 span.nv {
  color: #00FDBD;
@@ -27,11 +68,20 @@ img.tenc-header__logo {
 div.input_prompt {
 color: #00FDBD
 }
+.rendered_html thead {
+ background: #000000 !important;
+ color: #00FDBD !important;
+}
+ tbody tr {
+ background: #000001 !important;
+}
 
 
+/*
 body {
  background-color: #000001;
 }
+*/
 div.body {
  font-family: sans-serif;
  font-size: 13pt;
@@ -1957,7 +2007,7 @@ pre {
  margin: 0 0 9px;
  font-size: 12.0pt;
  line-height: 1.42857143;
- color: #cdd2e9;
+ color: #FFFFFF;
  background-color: #2a313c;
  border: 1px solid #2a313c;
  border-radius: 2px;
@@ -1993,7 +2043,7 @@ div.text_cell_render code {
  font-family: monospace, monospace;
  font-size: 11pt !important;
  line-height: 170% !important;
- color: #abc1e2;
+ color: #FFFFFF;
  background: #000001;
  background-color: #000001;
  max-width: 80%;
@@ -2001,8 +2051,8 @@ div.text_cell_render code {
  border-left: none;
 }
 div.text_cell_render pre {
- border-left: 3px solid #3572c6 !important;
- max-width: 80%;
+ border-left: 3px solid #5934E7 !important;
+ max-width: 100% !important;
  border-radius: 0px;
  padding-left: 5px;
  margin-left: 6px;
@@ -2103,7 +2153,7 @@ div#_vivaldi-spatnav-focus-indicator._vivaldi-spatnav-focus-indicator {
 }
 .rendered_html td {
  font-family: sans-serif !important;
- font-size: 9.3pt;
+ font-size: 11pt;
 }
 .rendered_html table {
  font-family: sans-serif !important;
@@ -2117,7 +2167,7 @@ div#_vivaldi-spatnav-focus-indicator._vivaldi-spatnav-focus-indicator {
 }
 .rendered_html thead {
  font-family: sans-serif !important;
- font-size: 10.3pt !important;
+ font-size: 13pt !important;
  background: #2e3642;
  color: #d4d8ec;
  border-bottom: 1px solid #2e3642;
