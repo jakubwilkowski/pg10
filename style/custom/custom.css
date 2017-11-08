@@ -5,6 +5,12 @@ div#notebook {
  color: #cdd2e9;
  -webkit-font-smoothing: antialiased !important;
 }
+.rendered_html strong {
+ color: #00FDBD !important;
+}
+.reveal blockquote{
+ background: #000001 !important;
+}
 span.mrow {
  color: #FFFFFF;
 }

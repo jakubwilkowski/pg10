@@ -11778,6 +11778,12 @@ ul.typeahead-list > li > a {
  color: #cdd2e9;
  -webkit-font-smoothing: antialiased !important;
 }
+.rendered_html strong {
+ color: #00FDBD !important;
+}
+.reveal blockquote{
+ background: #000001 !important;
+}
 span.mrow {
  color: #FFFFFF;
 }
@@ -15232,7 +15238,7 @@ a.anchor-link {
 <div class="prompt input_prompt">In&nbsp;[37]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="o">!</span>docker pull postgres:9.6
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>docker pull postgres:9.6
 <span class="o">!</span>docker run -p <span class="m">5430</span>:5432 --name jupy-old-postgres -e <span class="nv">POSTGRES_PASSWORD</span><span class="o">=</span>mysecretpassword -d postgres:9.6
 </pre></div>
 
@@ -15267,7 +15273,7 @@ ea95e66ea557f1ad3eca203be4ca690ead9d2cd974dac76fe190902241f83305
 <div class="prompt input_prompt">In&nbsp;[38]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="o">!</span>docker pull postgres:10
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>docker pull postgres:10
 <span class="o">!</span>docker run -p <span class="m">5431</span>:5432 --name jupy-new-postgres -e <span class="nv">POSTGRES_PASSWORD</span><span class="o">=</span>mysecretpassword -d postgres:10
 </pre></div>
 
@@ -15310,7 +15316,7 @@ Status: Image is up to date for postgres:10
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">reload_ext</span> sql
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">reload_ext</span> sql
 <span class="n">connection96</span><span class="o">=</span><span class="s2">&quot;postgresql+psycopg2://postgres:mysecretpassword@localhost:5430/postgres&quot;</span>
 <span class="n">connection10</span><span class="o">=</span><span class="s2">&quot;postgresql+psycopg2://postgres:mysecretpassword@localhost:5431/postgres&quot;</span>
 </pre></div>
@@ -15325,7 +15331,7 @@ Status: Image is up to date for postgres:10
 <div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection96
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection96
 select current_setting(&#39;server_version&#39;);
 </pre></div>
 
@@ -15376,7 +15382,7 @@ select current_setting(&#39;server_version&#39;);
 <div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10
 select current_setting(&#39;server_version&#39;)
 </pre></div>
 
@@ -15429,7 +15435,7 @@ select current_setting(&#39;server_version&#39;)
 <h1 id="1.-Identity-columns">1. Identity columns<a class="anchor-link" href="#1.-Identity-columns">&#182;</a></h1>
 </div>
 </div>
-</div><div class="fragment">
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -15470,7 +15476,7 @@ select current_setting(&#39;server_version&#39;)
 
 </div>
 </div>
-</div></div><div class="fragment">
+</div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -15752,7 +15758,7 @@ Indexes:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="How-is-it-now?">How is it now?<a class="anchor-link" href="#How-is-it-now?">&#182;</a></h2><ul>
+<h2 id="What's-the-current-state?">What's the current state?<a class="anchor-link" href="#What's-the-current-state?">&#182;</a></h2><ul>
 <li>Create a master table, <strong>specify partitioning rule</strong>.</li>
 <li>Create as many <del>(inherited)</del> child tables with datetime constraints as needed.</li>
 <li>Create indices, keys, and other constraints on child tables.</li>
@@ -15884,7 +15890,7 @@ Indexes:
 <td></td>
 </tr>
 <tr>
-<td>Bitmap Index Scan on idx_measurement_201709_datetime (cost=0.00..4.22 rows=7 width=0)</td>
+<td>Bitmap Index Scan on <strong>idx_measurement_201709_datetime</strong> (cost=0.00..4.22 rows=7 width=0)</td>
 <td></td>
 </tr>
 </tbody>
@@ -16013,65 +16019,40 @@ Indexes:
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[37]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10 
-EXPLAIN SELECT datetime FROM counting_log WHERE child_id=123;
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="k">EXPLAIN</span> <span class="k">SELECT</span> <span class="n">datetime</span> <span class="k">FROM</span> <span class="n">counting_log</span> <span class="k">WHERE</span> <span class="n">child_id</span><span class="o">=</span><span class="mf">123</span><span class="p">;</span>
 </pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>4 rows affected.
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[37]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
+<p><br/></p>
 <table>
-    <tr>
-        <th>QUERY PLAN</th>
-    </tr>
-    <tr>
-        <td>Bitmap Heap Scan on counting_log  (cost=19.95..2697.67 rows=971 width=8)</td>
-    </tr>
-    <tr>
-        <td>&nbsp;&nbsp;Recheck Cond: (child_id = 123)</td>
-    </tr>
-    <tr>
-        <td>&nbsp;&nbsp;-&gt;  Bitmap Index Scan on idx_counting_log_child_id  (cost=0.00..19.71 rows=971 width=0)</td>
-    </tr>
-    <tr>
-        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Index Cond: (child_id = 123)</td>
-    </tr>
+<thead><tr>
+<th>QUERY PLAN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bitmap Heap Scan on counting_log  (cost=19.92..2688.01 <strong>rows=967</strong> width=8)</td>
+<td></td>
+</tr>
+<tr>
+<td>Recheck Cond: (child_id = 123)</td>
+<td></td>
+</tr>
+<tr>
+<td>-&gt;  Bitmap Index Scan on idx_counting_log_child_id  (cost=0.00..19.68 rows=967 width=0)</td>
+<td></td>
+</tr>
+<tr>
+<td>Index Cond: (child_id = 123)</td>
+<td></td>
+</tr>
+</tbody>
 </table>
-</div>
-
-</div>
 
 </div>
 </div>
-
 </div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
@@ -16081,59 +16062,32 @@ EXPLAIN SELECT datetime FROM counting_log WHERE child_id=123;
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[38]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10 
-EXPLAIN SELECT datetime FROM counting_log WHERE word=&#39;miny&#39;;
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="k">EXPLAIN</span> <span class="k">SELECT</span> <span class="n">datetime</span> <span class="k">FROM</span> <span class="n">counting_log</span> <span class="k">WHERE</span> <span class="n">word</span><span class="o">=</span><span class="s1">&#39;miny&#39;</span><span class="p">;</span>
 </pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>2 rows affected.
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[38]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
+<p><br/></p>
 <table>
-    <tr>
-        <th>QUERY PLAN</th>
-    </tr>
-    <tr>
-        <td>Seq Scan on counting_log  (cost=0.00..19643.00 rows=252867 width=8)</td>
-    </tr>
-    <tr>
-        <td>&nbsp;&nbsp;Filter: (word = &#x27;miny&#x27;::text)</td>
-    </tr>
+<thead><tr>
+<th>QUERY PLAN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> Seq Scan on counting_log  (cost=0.00..19643.00 <strong>rows=249133</strong> width=8)</td>
+<td></td>
+</tr>
+<tr>
+<td>   Filter: (word = 'miny'::text)</td>
+<td></td>
+</tr>
+</tbody>
 </table>
-</div>
-
-</div>
 
 </div>
 </div>
-
 </div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
@@ -16153,68 +16107,44 @@ EXPLAIN SELECT datetime FROM counting_log WHERE word=&#39;miny&#39;;
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[40]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10 
-EXPLAIN SELECT datetime FROM counting_log WHERE word=&#39;miny&#39; and child_id=123;
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="k">EXPLAIN</span> <span class="k">SELECT</span> <span class="n">datetime</span> <span class="k">FROM</span> <span class="n">counting_log</span> <span class="k">WHERE</span> <span class="n">word</span><span class="o">=</span><span class="s1">&#39;miny&#39;</span> <span class="k">and</span> <span class="n">child_id</span><span class="o">=</span><span class="mf">123</span><span class="p">;</span>
 </pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>5 rows affected.
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[40]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
+<p><br/></p>
 <table>
-    <tr>
-        <th>QUERY PLAN</th>
-    </tr>
-    <tr>
-        <td>Bitmap Heap Scan on counting_log  (cost=19.77..2699.92 rows=245 width=8)</td>
-    </tr>
-    <tr>
-        <td>&nbsp;&nbsp;Recheck Cond: (child_id = 123)</td>
-    </tr>
-    <tr>
-        <td>&nbsp;&nbsp;Filter: (word = &#x27;miny&#x27;::text)</td>
-    </tr>
-    <tr>
-        <td>&nbsp;&nbsp;-&gt;  Bitmap Index Scan on idx_counting_log_child_id  (cost=0.00..19.71 rows=971 width=0)</td>
-    </tr>
-    <tr>
-        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Index Cond: (child_id = 123)</td>
-    </tr>
+<thead><tr>
+<th>QUERY PLAN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bitmap Heap Scan on counting_log (cost=19.77..2699.92 rows=245 width=8)</td>
+<td></td>
+</tr>
+<tr>
+<td>  Recheck Cond: (child_id = 123)</td>
+<td></td>
+</tr>
+<tr>
+<td>  Filter: (word = 'miny'::text)</td>
+<td></td>
+</tr>
+<tr>
+<td>  -&gt; Bitmap Index Scan on idx_counting_log_child_id (cost=0.00..19.71 rows=971 width=0)</td>
+<td></td>
+</tr>
+<tr>
+<td>        Index Cond: (child_id = 123)</td>
+<td></td>
+</tr>
+</tbody>
 </table>
-</div>
-
-</div>
 
 </div>
 </div>
-
 </div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
@@ -16224,56 +16154,28 @@ EXPLAIN SELECT datetime FROM counting_log WHERE word=&#39;miny&#39; and child_id
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[49]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">sql</span> $connection10 
-SELECT count(datetime) FROM counting_log WHERE word=&#39;miny&#39; and child_id=123;
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">count</span><span class="p">(</span><span class="n">datetime</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">counting_log</span> <span class="k">WHERE</span> <span class="n">word</span><span class="o">=</span><span class="s1">&#39;miny&#39;</span> <span class="k">and</span> <span class="n">child_id</span><span class="o">=</span><span class="mf">123</span><span class="p">;</span>
 </pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>1 rows affected.
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[49]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
+<p><br/></p>
 <table>
-    <tr>
-        <th>count</th>
-    </tr>
-    <tr>
-        <td>1000</td>
-    </tr>
+<thead><tr>
+<th>count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>  1000</td>
+<td></td>
+</tr>
+</tbody>
 </table>
-</div>
-
-</div>
 
 </div>
 </div>
-
 </div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
@@ -16359,12 +16261,86 @@ SELECT count(datetime) FROM counting_log WHERE word=&#39;miny&#39; and child_id=
 
 </div>
 </div>
-</div></div></section></section><section><section>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Let's-look-closer-at-our-new-statistics">Let's look closer at our new statistics<a class="anchor-link" href="#Let's-look-closer-at-our-new-statistics">&#182;</a></h2>
+<div class="highlight"><pre><span></span><span class="k">ANALYZE</span> <span class="n">counting_log</span><span class="p">;</span>
+<span class="k">EXPLAIN</span> <span class="k">SELECT</span> <span class="n">datetime</span> <span class="k">FROM</span> <span class="n">counting_log</span> <span class="k">WHERE</span> <span class="n">word</span><span class="o">=</span><span class="s1">&#39;miny&#39;</span> <span class="k">and</span> <span class="n">child_id</span><span class="o">=</span><span class="mf">123</span><span class="p">;</span>
+</pre></div>
+<p><br/></p>
+<table>
+<thead><tr>
+<th>QUERY PLAN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> Bitmap Heap Scan on counting_log  (cost=19.93..2692.85 <strong>rows=968</strong> width=8)</td>
+<td></td>
+</tr>
+<tr>
+<td>   Recheck Cond: (child_id = 123)</td>
+<td></td>
+</tr>
+<tr>
+<td>   Filter: (word = 'miny'::text)</td>
+<td></td>
+</tr>
+<tr>
+<td>   -&gt;  Bitmap Index Scan on idx_counting_log_child_id  (cost=0.00..19.68 rows=968 width=0)</td>
+<td></td>
+</tr>
+<tr>
+<td>         Index Cond: (child_id = 123)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1><div style="text-align: center">968 &asymp; 1000</h1>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Let's-look-closer-at-our-new-statistics">Let's look closer at our new statistics<a class="anchor-link" href="#Let's-look-closer-at-our-new-statistics">&#182;</a></h3><p><br/></p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">stxname</span><span class="p">,</span> <span class="n">stxkeys</span><span class="p">,</span> <span class="n">stxkind</span><span class="p">,</span> <span class="n">stxndistinct</span><span class="p">,</span> <span class="n">stxdependencies</span> 
+  <span class="k">FROM</span> <span class="n">pg_statistic_ext</span> 
+  <span class="k">WHERE</span> <span class="n">stxname</span> <span class="o">=</span> <span class="s1">&#39;st_counting_log_child_id_word&#39;</span><span class="p">;</span>
+</pre></div>
+<p><br/></p>
+<table>
+<thead><tr>
+<th>stxname</th>
+<th>stxkeys</th>
+<th>stxkind</th>
+<th>stxndistinct</th>
+<th>stxdependencies    </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> st_counting_log_child_id_word</td>
+<td>3 4</td>
+<td>{d,f}</td>
+<td>{"3, 4": 1000}</td>
+<td>{"3 =&gt; 4": 1.000000}</td>
+</tr>
+</tbody>
+</table>
+
 </div>
 </div>
 </div></section></section><section><section>
@@ -16380,7 +16356,7 @@ SELECT count(datetime) FROM counting_log WHERE word=&#39;miny&#39; and child_id=
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Parallel-queries-in-Postgres-so-far">Parallel queries in Postgres so far<a class="anchor-link" href="#Parallel-queries-in-Postgres-so-far">&#182;</a></h2><p><br/><br/></p>
+<h2 id="Parallel-queries-in-Postgres-so-far">Parallel queries in Postgres so far<a class="anchor-link" href="#Parallel-queries-in-Postgres-so-far">&#182;</a></h2><p><br/></p>
 <ul>
 <li>Postgres 9.6:<ul>
 <li>Parallel Scans<ul>
@@ -16404,7 +16380,7 @@ SELECT count(datetime) FROM counting_log WHERE word=&#39;miny&#39; and child_id=
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="With-pg10-we-also-get:">With pg10 we also get:<a class="anchor-link" href="#With-pg10-we-also-get:">&#182;</a></h2><p><br/><br/></p>
+<h2 id="With-pg10-we-also-get:">With pg10 we also get:<a class="anchor-link" href="#With-pg10-we-also-get:">&#182;</a></h2><p><br/></p>
 <ul>
 <li>Postgres 10:<ul>
 <li>Parallel Scans<ul>
@@ -16715,15 +16691,15 @@ SELECT count(datetime) FROM counting_log WHERE word=&#39;miny&#39; and child_id=
 </thead>
 <tbody>
 <tr>
-<td> Gather  (cost=1000.43..40550.21 rows=13356 width=8)</td>
+<td> <strong>Gather  (cost=1000.43..40550.21 rows=13356 width=8)</strong></td>
 <td></td>
 </tr>
 <tr>
-<td>   Workers Planned: 2</td>
+<td>   <strong>Workers Planned: 2</strong></td>
 <td></td>
 </tr>
 <tr>
-<td>   -&gt;  Parallel Index Scan using idx_trigonometry_arg on trigonometry  (cost=0.43..38214.61 rows=5565 width=8)</td>
+<td>   -&gt;  <strong>Parallel Index Scan</strong> using idx_trigonometry_arg on trigonometry  (cost=0.43..38214.61 rows=5565 width=8)</td>
 <td></td>
 </tr>
 <tr>
@@ -16755,7 +16731,7 @@ SELECT count(datetime) FROM counting_log WHERE word=&#39;miny&#39; and child_id=
 <div class="highlight"><pre><span></span><span class="k">SET</span> <span class="n">max_parallel_workers</span><span class="o">=</span><span class="mf">0</span><span class="p">;</span>
 <span class="k">SET</span> <span class="n">force_parallel_mode</span><span class="o">=</span><span class="k">on</span><span class="p">;</span>
 <span class="k">EXPLAIN</span> <span class="k">ANALYZE</span> <span class="k">SELECT</span> <span class="n">arg</span> <span class="k">FROM</span> <span class="n">trigonometry</span> 
-                <span class="k">WHERE</span> <span class="n">sine</span> <span class="o">&gt;</span> <span class="mf">0.999</span> <span class="k">AND</span> <span class="n">arg</span> <span class="o">&gt;</span><span class="mf">100</span> <span class="k">AND</span> <span class="n">arg</span> <span class="o">&lt;</span> <span class="mf">10000</span><span class="p">;</span>
+                  <span class="k">WHERE</span> <span class="n">sine</span> <span class="o">&gt;</span> <span class="mf">0.999</span> <span class="k">AND</span> <span class="n">arg</span> <span class="o">&gt;</span><span class="mf">100</span> <span class="k">AND</span> <span class="n">arg</span> <span class="o">&lt;</span> <span class="mf">10000</span><span class="p">;</span>
 </pre></div>
 
 </div>
@@ -16776,11 +16752,11 @@ SELECT count(datetime) FROM counting_log WHERE word=&#39;miny&#39; and child_id=
 <td></td>
 </tr>
 <tr>
-<td>   Workers Planned: 2</td>
+<td>   <strong>Workers Planned: 2</strong></td>
 <td></td>
 </tr>
 <tr>
-<td>   Workers Launched: 0</td>
+<td>   <strong>Workers Launched: 0</strong></td>
 <td></td>
 </tr>
 <tr>
@@ -16797,7 +16773,169 @@ SELECT count(datetime) FROM counting_log WHERE word=&#39;miny&#39; and child_id=
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Full-text-search-support-JSON-&amp;-JSONB-columns">Full text search support JSON &amp; JSONB columns<a class="anchor-link" href="#Full-text-search-support-JSON-&amp;-JSONB-columns">&#182;</a></h1>
+<h1 id="5.-Full-text-search-support-JSON-&amp;-JSONB-columns">5. Full text search support JSON &amp; JSONB columns<a class="anchor-link" href="#5.-Full-text-search-support-JSON-&amp;-JSONB-columns">&#182;</a></h1>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="In-previous-releases-full-text-search-worked-only-on-TEXT-columns">In previous releases full text search worked only on TEXT columns<a class="anchor-link" href="#In-previous-releases-full-text-search-worked-only-on-TEXT-columns">&#182;</a></h2>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h2>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">transactions</span><span class="p">(</span>
+  <span class="n">id</span> <span class="nb">INT</span> <span class="n">GENERATED</span> <span class="k">ALWAYS</span> <span class="k">AS</span> <span class="k">IDENTITY</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span> 
+  <span class="n">transaction_id</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mf">10</span><span class="p">),</span> 
+  <span class="n">user_id</span> <span class="nb">INTEGER</span><span class="p">,</span> 
+  <span class="n">created_datetime</span> <span class="nb">TIMESTAMP</span> <span class="nb">WITH TIME ZONE</span><span class="p">,</span> 
+  <span class="n">result</span> <span class="nb">BOOL</span><span class="p">,</span> 
+  <span class="n">amount</span> <span class="nb">INT</span> <span class="p">,</span>
+  <span class="n">response_data</span> <span class="nb">JSON</span><span class="p">);</span>
+</pre></div>
+<p><br/></p>
+<table>
+<thead><tr>
+<th>response_data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>{"transaction":<br>
+     {"id": "91a40daa7d",<br>
+      "transaction_datetime": "2017-11-07 14:11:55.328364+00",
+      "amount": 833,<br>
+      "is_success": "false",<br>
+      "message": "insufficient funds"}}</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Creating-a-GIN-index">Creating a GIN index<a class="anchor-link" href="#Creating-a-GIN-index">&#182;</a></h3><p><br/></p>
+<div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">INDEX</span> <span class="n">idx_transactions_response_data</span> 
+  <span class="k">ON</span> <span class="n">transactions</span> <span class="k">USING</span> <span class="n">GIN</span> <span class="p">(</span><span class="n">to_tsvector</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">,</span> <span class="n">response_data</span><span class="p">));</span>
+</pre></div>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Querying-using-TS">Querying using TS<a class="anchor-link" href="#Querying-using-TS">&#182;</a></h3><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">transaction_id</span> 
+  <span class="k">FROM</span> <span class="n">transactions</span> 
+  <span class="k">WHERE</span> <span class="n">to_tsvector</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">,</span> <span class="n">response_data</span><span class="o">-&gt;</span><span class="s1">&#39;transaction&#39;</span><span class="o">-&gt;</span><span class="s1">&#39;message&#39;</span><span class="p">)</span> <span class="o">@@</span> 
+    <span class="n">to_tsquery</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">,</span> <span class="s1">&#39;insufficient&#39;</span><span class="p">)</span> <span class="k">LIMIT</span> <span class="mf">5</span><span class="p">;</span>
+</pre></div>
+<p><br/></p>
+<table>
+<thead><tr>
+<th>transaction_id</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> 91a40daa7d</td>
+<td></td>
+</tr>
+<tr>
+<td> 4fc852f17b</td>
+<td></td>
+</tr>
+<tr>
+<td> 6b32294ed4</td>
+<td></td>
+</tr>
+<tr>
+<td> a9ae624482</td>
+<td></td>
+</tr>
+<tr>
+<td> 23eb7d83c1</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="to_tsquery">to_tsquery<a class="anchor-link" href="#to_tsquery">&#182;</a></h3><p><br/></p>
+<blockquote><p>insufficient -&gt; insuffici</p>
+</blockquote>
+<p><br/></p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">transaction_id</span> 
+  <span class="k">FROM</span> <span class="n">transactions</span>
+  <span class="k">WHERE</span> <span class="n">to_tsvector</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">,</span> <span class="n">response_data</span><span class="o">-&gt;</span><span class="s1">&#39;transaction&#39;</span><span class="o">-&gt;</span><span class="s1">&#39;message&#39;</span><span class="p">)</span> <span class="o">@@</span> 
+    <span class="s1">&#39;insuffici&#39;</span> <span class="k">LIMIT</span> <span class="mf">5</span><span class="p">;</span>
+</pre></div>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Explain">Explain<a class="anchor-link" href="#Explain">&#182;</a></h3><p><br/></p>
+<div class="highlight"><pre><span></span><span class="k">EXPLAIN</span> <span class="k">SELECT</span> <span class="n">transaction_id</span> <span class="k">FROM</span> <span class="n">transactions</span> <span class="k">WHERE</span> <span class="n">to_tsvector</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">,</span> <span class="n">response_data</span><span class="p">)</span> <span class="o">@@</span> <span class="n">to_tsquery</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">,</span> <span class="s1">&#39;insufficient&#39;</span><span class="p">)</span> <span class="k">LIMIT</span> <span class="mf">5</span><span class="p">;</span>
+</pre></div>
+<p><br/></p>
+<table>
+<thead><tr>
+<th>QUERY PLAN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> Limit  (cost=8.04..23.42 rows=5 width=11)</td>
+<td></td>
+</tr>
+<tr>
+<td>   -&gt;  Bitmap Heap Scan on transactions  (cost=8.04..23.42 rows=5 width=11)</td>
+<td></td>
+</tr>
+<tr>
+<td>         Recheck Cond: (to_tsvector('english'::regconfig, response_data) @@ '''insuffici'''::tsquery)</td>
+<td></td>
+</tr>
+<tr>
+<td>         -&gt;  <strong>Bitmap Index Scan on idx_transactions_response_data</strong>  (cost=0.00..8.04 rows=5 width=0)</td>
+<td></td>
+</tr>
+<tr>
+<td>               Index Cond: (to_tsvector('english'::regconfig, response_data) @@ '''insuffici'''::tsquery)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
 </div>
 </div>
 </div></section></section><section><section>
