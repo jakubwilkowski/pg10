@@ -12116,7 +12116,18 @@ a.anchor-link {
 <h1 id="About-me">About me<a class="anchor-link" href="#About-me">&#182;</a></h1><p><br /></p>
 <h2 id="Currently:">Currently:<a class="anchor-link" href="#Currently:">&#182;</a></h2><h3 id="Python-developer">Python developer<a class="anchor-link" href="#Python-developer">&#182;</a></h3><p><img class="tenc-header__logo" src="https://10clouds.com/wp-content/themes/thegem/dist/images/10clouds-logo-color-black.svg" alt="10Clouds" >
 <br /><br /></p>
-<h2 id="Previously:">Previously:<a class="anchor-link" href="#Previously:">&#182;</a></h2><h4 id="*-Database-developer-in-major-telecom-company">* Database developer in major telecom company<a class="anchor-link" href="#*-Database-developer-in-major-telecom-company">&#182;</a></h4><h4 id="*-Application-development-specialist-in-consulting/finance">* Application development specialist in consulting/finance<a class="anchor-link" href="#*-Application-development-specialist-in-consulting/finance">&#182;</a></h4><h4 id="*-MSc-in-telecommunications">* MSc in telecommunications<a class="anchor-link" href="#*-MSc-in-telecommunications">&#182;</a></h4>
+<h2 id="Previously:">Previously:<a class="anchor-link" href="#Previously:">&#182;</a></h2><h4 id="*-MSc-in-telecommunications">* MSc in telecommunications<a class="anchor-link" href="#*-MSc-in-telecommunications">&#182;</a></h4><h4 id="*-Database-developer-in-major-telecom-company">* Database developer in major telecom company<a class="anchor-link" href="#*-Database-developer-in-major-telecom-company">&#182;</a></h4><h4 id="*-Application-development-specialist-in-consulting/finance">* Application development specialist in consulting/finance<a class="anchor-link" href="#*-Application-development-specialist-in-consulting/finance">&#182;</a></h4>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="About-Postgres">About Postgres<a class="anchor-link" href="#About-Postgres">&#182;</a></h1><p><br /><br />
+<img src="https://github.com/jakubwilkowski/pg10/blob/master/img/dbengines_201711.png?raw=true">
+source: <a href="https://db-engines.com/en/ranking_trend">db-engines.com</a></p>
+
 </div>
 </div>
 </div></section></section><section><section>
@@ -12419,7 +12430,7 @@ Indexes:
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Implementation">Implementation<a class="anchor-link" href="#Implementation">&#182;</a></h2><p><br />
-<img class="tenc-header__logo" src="https://raw.githubusercontent.com/jakubwilkowski/pg10/master/img/smogdog.png" alt="10Clouds" ></p>
+<img src="https://raw.githubusercontent.com/jakubwilkowski/pg10/master/img/smogdog.png"></p>
 
 </div>
 </div>
@@ -12482,27 +12493,6 @@ Indexes:
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Messing-with-partitions">Messing with partitions<a class="anchor-link" href="#Messing-with-partitions">&#182;</a></h2>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Insert">Insert<a class="anchor-link" href="#Insert">&#182;</a></h3><p><br/></p>
-<div class="highlight"><pre><span></span><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">measurement</span><span class="p">(</span>
-  <span class="n">datetime</span><span class="p">,</span> 
-  <span class="n">site_id</span><span class="p">,</span> 
-  <span class="n">pollutant_id</span><span class="p">,</span> 
-  <span class="k">value</span><span class="p">)</span>
-<span class="k">SELECT</span> 
-  <span class="s1">&#39;2017-08-01&#39;</span><span class="o">::</span><span class="nb">TIMESTAMPTZ</span> <span class="o">+</span> <span class="p">((</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mf">90</span><span class="p">)</span><span class="o">::</span><span class="nb">int</span><span class="p">)</span> <span class="o">*</span> <span class="nb">INTERVAL</span> <span class="s1">&#39;1 day&#39;</span><span class="p">,</span>
-  <span class="p">(</span><span class="mf">1</span> <span class="o">+</span> <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="p">(</span><span class="k">SELECT</span> <span class="n">max</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="o">-</span><span class="mf">1</span> <span class="k">FROM</span> <span class="n">site</span><span class="p">))</span><span class="o">::</span><span class="nb">int</span><span class="p">,</span>
-  <span class="p">(</span><span class="mf">1</span> <span class="o">+</span> <span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="p">(</span><span class="k">SELECT</span> <span class="n">max</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="o">-</span><span class="mf">1</span> <span class="k">FROM</span> <span class="n">pollutant</span><span class="p">))</span><span class="o">::</span><span class="nb">int</span><span class="p">,</span>
-  <span class="n">random</span><span class="p">()</span>
-<span class="k">FROM</span> <span class="n">generate_series</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="mf">1000</span><span class="p">);</span>
-</pre></div>
-
 </div>
 </div>
 </div></section><section>
@@ -12832,8 +12822,8 @@ Indexes:
 <h2 id="What-if?">What if?<a class="anchor-link" href="#What-if?">&#182;</a></h2><p><br/><br/></p>
 <ul>
 <li>We actually wanted to join another table to above results (i.e. children info)?</li>
-<li>... and because of such big underestimation query planner chose to use nested loop instead of hash join?</li>
 <li>... and we had more tables to join with <strong>a lot</strong> more data in it?</li>
+<li>... and query planner chose to use nested loop instead of hash join?</li>
 </ul>
 
 </div>
@@ -13042,83 +13032,6 @@ Indexes:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="New-settings">New settings<a class="anchor-link" href="#New-settings">&#182;</a></h2>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Minimal-size-of-a-table-for-which-parallelism-can-be-triggered">Minimal size of a table for which parallelism can be triggered<a class="anchor-link" href="#Minimal-size-of-a-table-for-which-parallelism-can-be-triggered">&#182;</a></h3><p><br/></p>
-<div class="highlight"><pre><span></span><span class="k">show</span> <span class="n">min_parallel_table_scan_size</span><span class="p">;</span>
-</pre></div>
-<p><br/></p>
-<table>
-<thead><tr>
-<th>min_parallel_table_scan_size</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>8MB</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Minimal-size-of-a-index-for-which-parallelism-can-be-triggered">Minimal size of a index for which parallelism can be triggered<a class="anchor-link" href="#Minimal-size-of-a-index-for-which-parallelism-can-be-triggered">&#182;</a></h3><p><br/></p>
-<div class="highlight"><pre><span></span><span class="k">show</span> <span class="n">min_parallel_index_scan_size</span><span class="p">;</span>
-</pre></div>
-<p><br/></p>
-<table>
-<thead><tr>
-<th>min_parallel_index_scan_size</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>512kB</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Maximum-number-of-parallel-workers-to-be-used">Maximum number of parallel workers to be used<a class="anchor-link" href="#Maximum-number-of-parallel-workers-to-be-used">&#182;</a></h3><p><br/></p>
-<div class="highlight"><pre><span></span><span class="k">show</span> <span class="n">max_parallel_workers</span><span class="p">;</span>
-</pre></div>
-<p><br/></p>
-<table>
-<thead><tr>
-<th>max_parallel_workers</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>8</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h2>
 </div>
 </div>
@@ -13172,52 +13085,7 @@ Indexes:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Parallel-aggregate-(old-stuff)">Parallel aggregate (old stuff)<a class="anchor-link" href="#Parallel-aggregate-(old-stuff)">&#182;</a></h3>
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span><span class="k">EXPLAIN</span> <span class="k">SELECT</span> <span class="n">count</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">trigonometry</span> <span class="k">WHERE</span> <span class="n">arg</span> <span class="o">&gt;</span> <span class="mf">50000</span><span class="p">;</span>
-</pre></div>
-<p><br/></p>
-<table>
-<thead><tr>
-<th>QUERY PLAN</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Finalize Aggregate  (cost=138908.78..138908.79 rows=1 width=8)</td>
-</tr>
-<tr>
-<td>-&gt;  Gather  (cost=138908.56..138908.77 rows=2 width=8)</td>
-</tr>
-<tr>
-<td>Workers Planned: 2</td>
-</tr>
-<tr>
-<td>-&gt;  Partial Aggregate  (cost=137908.56..137908.57 rows=1 width=8)</td>
-</tr>
-<tr>
-<td>-&gt;  Parallel Seq Scan on trigonometry  (cost=0.00..134436.34 rows=1388889 width=32)</td>
-</tr>
-<tr>
-<td>Filter: (arg &gt; '50000'::numeric)</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Parallel-index-scan-(new-and-shiny)">Parallel index scan (new and shiny)<a class="anchor-link" href="#Parallel-index-scan-(new-and-shiny)">&#182;</a></h3>
+<h3 id="Parallel-index-scan">Parallel index scan<a class="anchor-link" href="#Parallel-index-scan">&#182;</a></h3>
 </div>
 </div>
 </div><div class="fragment">
@@ -13522,6 +13390,7 @@ Indexes:
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
 <li>logical replication</li>
+<li>safer hash indices</li>
 <li>quorum commit for synchronous replication</li>
 <li>XML tables</li>
 <li>SCRAM authentication</li>
@@ -13576,27 +13445,35 @@ Indexes:
 <ol>
 <li>Identity columns<ul>
 <li><a href="https://www.postgresql.org/docs/10/static/sql-createtable.html">(Doc) Create table</a></li>
+<li><a href="https://www.depesz.com/2017/04/10/waiting-for-postgresql-10-identity-columns/">WAITING FOR POSTGRESQL 10 – IDENTITY COLUMNS</a></li>
+<li><a href="https://blog.2ndquadrant.com/postgresql-10-identity-columns/">PostgreSQL 10 identity columns explained</a></li>
 </ul>
 </li>
 <li>Native partitioning<ul>
 <li><a href="https://www.postgresql.org/docs/10/static/ddl-partitioning.html">(Doc) Table partitioning</a></li>
 <li><a href="https://blog.timescale.com/scaling-partitioning-data-postgresql-10-explained-cd48a712a9a1">How to scale PostgreSQL 10 using table inheritance and declarative partitioning</a></li>
+<li><a href="https://blog.2ndquadrant.com/pg-phriday-pglogical-postgres-10-partitions/">PG Phriday: pglogical and Postgres 10 Partitions</a></li>
 </ul>
 </li>
 <li>Multicolumn statistics<ul>
 <li><a href="https://www.postgresql.org/docs/10/static/sql-createstatistics.html">(Doc) Create statistics</a></li>
 <li><a href="https://www.postgresql.org/docs/10/static/planner-stats.html#PLANNER-STATS-EXTENDED">(Doc) Statistics Used by the Planner</a></li>
 <li><a href="https://www.postgresql.org/docs/10/static/multivariate-statistics-examples.html">(Doc) Multivariate Statistics Examples</a></li>
+<li><a href="https://www.depesz.com/2017/05/19/waiting-for-postgresql-10-implement-multivariate-n-distinct-coefficients/">WAITING FOR POSTGRESQL 10 – IMPLEMENT MULTIVARIATE N-DISTINCT COEFFICIENTS</a></li>
+<li><a href="https://blog.2ndquadrant.com/pg-phriday-crazy-correlated-column-crusade/">PG Phriday: Crazy Correlated Column Crusade</a></li>
 </ul>
 </li>
 <li>Parallel Queries<ul>
 <li><a href="https://www.postgresql.org/docs/10/static/parallel-query.html">(Doc) Parallel Query</a></li>
 </ul>
 </li>
-<li>Full text search support for JSON &amp; JSONB</li>
+<li>Full text search support for JSON &amp; JSONB<ul>
+<li><a href="https://www.depesz.com/2017/04/04/waiting-for-postgresql-10-full-text-search-support-for-json-and-jsonb/">WAITING FOR POSTGRESQL 10 – FULL TEXT SEARCH SUPPORT FOR JSON AND JSONB</a></li>
+</ul>
+</li>
 <li>Other<ul>
 <li><a href="https://www.postgresql.org/docs/10/static/release-10-1.html">Release Notes</a></li>
-<li><a href="https://wiki.postgresql.org/wiki/New_in_postgres_10#Full_Text_Search_support_for_JSON_and_JSONB">New in postgres 10</a></li>
+<li><a href="https://wiki.postgresql.org/wiki/New_in_postgres_10">New in postgres 10</a></li>
 </ul>
 </li>
 </ol>
